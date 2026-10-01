@@ -9,6 +9,10 @@
   if (still || !("IntersectionObserver" in window)) {
     items.forEach(function (el) { el.classList.add("in"); });
   } else {
+    // Ciò che è già nello schermo all'apertura entra subito, anche se l'observer parte in ritardo (scheda in background).
+    setTimeout(function () {
+      items.forEach(function (el) { if (el.getBoundingClientRect().top < window.innerHeight) el.classList.add("in"); });
+    }, 50);
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); }
