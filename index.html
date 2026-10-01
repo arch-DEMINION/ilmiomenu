@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Il mio menù: dieta e spesa</title>
+<meta name="description" content="L'app che trasforma il piano del tuo nutrizionista in piccoli passi quotidiani: pasti, dispensa, lista della spesa e attività fisica. Tutto sul tuo telefono.">
+<meta name="theme-color" content="#15100c">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<meta property="og:title" content="Il mio menù: dieta e spesa">
+<meta property="og:description" content="Il piano del tuo nutrizionista, ogni giorno a portata di mano. Pasti, dispensa, spesa e attività in un'unica app.">
+<meta property="og:image" content="https://arch-deminion.github.io/ilmiomenu/img/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="img/icon-192.png">
+<link rel="preload" href="fonts/Nunito-Bold.ttf" as="font" type="font/ttf" crossorigin>
+<link rel="stylesheet" href="styles.css">
+<script src="site.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Vai al contenuto</a>
+<div class="progress" aria-hidden="true"></div>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#"><img src="img/icon.webp" alt="" width="34" height="34">Il mio menù</a>
+    <nav aria-label="Principale">
+      <a class="hide-s" href="#funzioni">Funzioni</a>
+      <a class="hide-s" href="privacy.html">Privacy</a>
+      <a class="btn" href="#test">Provala</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<section class="hero dark">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow reveal">App per Android</span>
+      <h1 class="reveal" style="--d:.08s">Il piano del tuo nutrizionista, <em>ogni giorno</em> a portata di mano.</h1>
+      <p class="lead reveal" style="--d:.16s">Pasti, dispensa, lista della spesa e attività fisica in un'unica app, semplice e gratuita. I tuoi dati restano sul tuo telefono.</p>
+      <div class="ctas reveal" style="--d:.24s">
+        <a class="btn primary" href="#test">Partecipa al test</a>
+        <a class="btn ghost" href="#trailer">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 5.5v13l11-6.5z"/></svg>Guarda il trailer
+        </a>
+      </div>
+      <p class="soon reveal" style="--d:.32s">Presto su Google Play</p>
+    </div>
+    <div class="hero-phones reveal zoom" style="--d:.2s">
+      <div data-parallax="-0.06"><div class="phone float"><img src="img/lista.webp" alt="La lista della spesa: 2 alimenti su 19 nel carrello, con quelli urgenti in cima" width="540" height="1169" fetchpriority="high"></div></div>
+      <div data-parallax="-0.14"><div class="phone float slow"><img src="img/piano.webp" alt="Il piano di oggi: pasti con alimenti e grammature" width="540" height="1169" fetchpriority="high"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COME FUNZIONA ============ -->
+<section class="block dark" style="padding-top:24px">
+  <div class="wrap">
+    <span class="eyebrow reveal">Come funziona</span>
+    <h2 class="reveal">Meno fogli, meno scuse.</h2>
+    <p class="lead reveal">Il mio menù non inventa diete: mostra il piano che ti ha dato il professionista, al momento giusto, e ti toglie la fatica di organizzarlo.</p>
+    <div class="cards c3">
+      <div class="card reveal"><div class="num">1</div><h3>Sai sempre cosa fare</h3><p>Il pasto di adesso, con alimenti e grammature, e cosa preparare in anticipo. Senza cercare il foglio.</p></div>
+      <div class="card reveal" style="--d:.1s"><div class="num">2</div><h3>La spesa si scrive da sola</h3><p>L'app confronta il piano con ciò che hai in dispensa e prepara la lista di quello che manca. Al supermercato basta inquadrare il codice a barre per spuntarla.</p></div>
+      <div class="card reveal" style="--d:.2s"><div class="num">3</div><h3>La costanza si vede</h3><p>Pasti segnati, obiettivo di attività fisica settimanale e settimane consecutive raggiunte.</p></div>
+    </div>
+    <div class="stats reveal">
+      <div class="stat"><b data-count="7">7</b><span>giorni di spesa calcolati in anticipo</span></div>
+      <div class="stat"><b data-count="40">40</b><span>medaglie da sbloccare con la costanza</span></div>
+      <div class="stat"><b data-count="9">9</b><span>temi grafici, tre speciali</span></div>
+      <div class="stat"><b data-count="100" data-suffix="%">100%</b><span>dei tuoi dati restano sul telefono</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TRAILER ============ -->
+<section class="block" id="trailer">
+  <div class="wrap center">
+    <span class="eyebrow reveal">Trailer</span>
+    <h2 class="reveal">Un minuto per vederla al lavoro.</h2>
+    <div class="video reveal zoom">
+      <button type="button" data-id="93YDoqdby34" aria-label="Riproduci il trailer su YouTube">
+        <img src="img/icon-192.png" alt="" width="192" height="192">
+        <span><strong>Il mio menù</strong><small>La tua dieta, la dispensa e la spesa in un'unica app</small></span>
+        <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6 4l15 8-15 8z"/></svg></span>
+      </button>
+    </div>
+    <p class="video-note">Il video si carica da YouTube solo quando premi play.</p>
+  </div>
+</section>
+
+<!-- ============ FUNZIONI ============ -->
+<section class="block peach" id="funzioni">
+  <div class="wrap">
+    <span class="eyebrow reveal">Le funzioni, una per una</span>
+    <h2 class="reveal">Dalla dieta al piano di ogni giorno.</h2>
+
+    <article class="feature">
+      <div class="text reveal">
+        <span class="step">1 · Arriva la dieta</span>
+        <h3>Tre strade per riempire l'app</h3>
+        <p>Al primo avvio l'app è vuota: nessuna dieta preinstallata. Scegli tu come riempirla.</p>
+        <ul>
+          <li><b>A mano</b>, copiando il foglio del nutrizionista: alimenti, grammature, nomi dei piatti.</li>
+          <li><b>Con i QR o con il PDF</b> ricevuto: si inquadrano i codici in qualsiasi ordine, oppure si apre il PDF e non serve la fotocamera.</li>
+          <li>La dieta importata si apre come bozza e diventa attiva solo dopo la conferma.</li>
+        </ul>
+        <p class="note"><b>Per il professionista.</b> Chi prepara le diete può usare il costruttore della dieta, un file HTML che si apre nel browser anche senza internet: si compone il piano e si scarica il PDF con i QR. Nessun dato viene inviato a nessuno.</p>
+      </div>
+      <div class="phones">
+        <div class="phone reveal from-left"><img src="img/primo-avvio.webp" alt="Primo avvio: inserisci la tua dieta" width="540" height="1169" loading="lazy"></div>
+        <div class="phone reveal from-right" style="--d:.12s"><img src="img/qr.webp" alt="Condividi la dieta con un codice QR" width="540" height="1169" loading="lazy"></div>
+      </div>
+    </article>
+
+    <article class="feature flip">
+      <div class="text reveal">
+        <span class="step">2 · Modifica dieta</span>
+        <h3>La dieta resta modificabile, con cautela</h3>
+        <p>Per ogni giorno: alimenti e quantità, nome del piatto, pasto libero. Un giorno si può copiare sugli altri.</p>
+        <ul>
+          <li>Consigli della dieta: l'acqua della giornata, consigli prima dei pasti scelti, alimenti in evidenza (per esempio l'olio).</li>
+          <li>Ogni modifica chiede «Sei sicuro?» e da quando vale: da subito o dal lunedì successivo.</li>
+          <li>Le diete si salvano con un nome; la dieta ricevuta si può sempre ripristinare.</li>
+        </ul>
+        <p class="note"><b>Per il professionista.</b> Consigli e promemoria viaggiano nei QR insieme alla dieta e arrivano al paziente come li ha scritti.</p>
+      </div>
+      <div class="phones">
+        <div class="phone reveal from-left"><img src="img/modifica-dieta.webp" alt="Modifica dieta: alimenti e grammature di un pasto" width="540" height="1169" loading="lazy"></div>
+        <div class="phone reveal from-right" style="--d:.12s"><img src="img/consigli-dieta.webp" alt="Consigli della dieta e alimenti in evidenza" width="540" height="1169" loading="lazy"></div>
+      </div>
+    </article>
+
+    <article class="feature">
+      <div class="text reveal">
+        <span class="step">3 · Il piano del giorno</span>
+        <h3>Cosa mangiare adesso, senza cercare il foglio</h3>
+        <p>All'apertura i pasti di oggi con alimenti e grammature, il prossimo pasto in evidenza. Con uno scorrimento laterale si passa al giorno dopo.</p>
+        <ul>
+          <li><b>Segna come mangiato</b>: il pasto si sbiadisce e gli alimenti escono dalla dispensa. La spunta automatica lo fa all'orario del pasto.</li>
+          <li>I consigli compaiono al momento giusto: l'acqua in cima, un consiglio prima di pranzo e cena, l'olio nel riquadro dorato.</li>
+          <li><b>Promemoria di preparazione</b>: «metti a cuocere il farro» 40 minuti prima, o la sera prima.</li>
+          <li>Si sfogliano anche le settimane passate, ognuna con la dieta com'era allora.</li>
+        </ul>
+      </div>
+      <div class="phones">
+        <div class="phone reveal from-left"><img src="img/piano.webp" alt="Il piano del giorno" width="540" height="1169" loading="lazy"></div>
+        <div class="phone reveal from-right" style="--d:.12s"><img src="img/prossimo-pasto.webp" alt="Il prossimo pasto in evidenza con l'olio nel riquadro dorato" width="540" height="1169" loading="lazy"></div>
+      </div>
+    </article>
+
+    <article class="feature flip">
+      <div class="text reveal">
+        <span class="step">4 · Imprevisti</span>
+        <h3>Flessibile, senza uscire dal piano</h3>
+        <p>La tabella sostituzioni raccoglie gruppi di alimenti equivalenti alle dosi scritte. Senza tabella, nel Piano non compare nessuna sostituzione.</p>
+        <ul>
+          <li>Gli alimenti sostituibili hanno il simbolo ⇄: un tocco mostra gli equivalenti, con la grammatura ricalcolata in proporzione. Vale solo per quel pasto.</li>
+          <li><b>Scambia giorno</b>: il menù di oggi si scambia con un altro giorno della settimana, sempre con Annulla.</li>
+          <li><b>Pranzo/cena</b>: i due pasti del giorno si invertono.</li>
+          <li><b>Scambi tra giorni</b>: alcuni gruppi (per esempio gelato e cioccolato) si spostano tra i giorni invece di sostituirsi.</li>
+          <li>Tutto questo vale anche per la settimana prossima.</li>
+        </ul>
+        <p class="note"><b>Per il professionista.</b> Le dosi non cambiano mai fuori dalla tabella: il paziente sceglie solo tra ciò che ha indicato come equivalente.</p>
+      </div>
+      <div class="phones">
+        <div class="phone reveal from-left"><img src="img/sostituzioni.webp" alt="Sostituisci yogurt greco: kefir, yogurt bianco magro, skyr" width="540" height="1169" loading="lazy"></div>
+        <div class="phone reveal from-right" style="--d:.12s"><img src="img/scambia.webp" alt="Scambia il menù di venerdì con un altro giorno" width="540" height="1169" loading="lazy"></div>
+      </div>
+    </article>
+
+    <article class="feature">
+      <div class="text reveal">
+        <span class="step">5 · Note sui pasti</span>
+        <h3>Un diario per la visita</h3>
+        <p>Su ogni pasto puoi attaccare un post-it: come ti sei sentito, una difficoltà, una domanda da fare. La nota vale per quel giorno oppure, con un interruttore, per ogni volta che quel pasto torna nella settimana.</p>
+        <p class="note"><b>Per il professionista.</b> Alla visita il paziente arriva con esempi concreti, non solo ricordi. Le note restano sul suo telefono.</p>
+      </div>
+      <div class="phones">
+        <div class="phone reveal zoom"><img src="img/postit.webp" alt="Un post-it attaccato a un pasto" width="540" height="1169" loading="lazy"></div>
+      </div>
+    </article>
+
+    <article class="feature flip">
+      <div class="text reveal">
+        <span class="step">6 · Dispensa e lista della spesa</span>
+        <h3>In casa c'è ciò che serve</h3>
+        <ul>
+          <li>La dispensa mostra gli alimenti per categoria con quantità, −/+ e ricerca; quelli finiti sono segnalati in cima e portano alla lista.</li>
+          <li>Si riempie con la spesa (tasto «Finito» della lista) o a mano. Quando un pasto è segnato come mangiato, i suoi alimenti vengono scalati da soli.</li>
+          <li>Appena confermi una dieta, i suoi alimenti entrano in dispensa come «finiti»: la lista sa subito cosa comprare.</li>
+          <li>La lista contiene ciò che serve per i prossimi sette giorni, meno ciò che c'è già. In cima gli urgenti: oggi e domani.</li>
+          <li>Spuntare significa «nel carrello»; con «Finito» tutto entra in dispensa. Puoi aggiungere articoli extra e anche cibi che la dieta non chiede.</li>
+          <li>Una notifica (di norma alle 9, 15 e 18) avvisa solo se manca davvero qualcosa per oggi o domani.</li>
+        </ul>
+      </div>
+      <div class="phones">
+        <div class="phone reveal from-left"><img src="img/dispensa.webp" alt="La dispensa con gli alimenti finiti in cima" width="540" height="1169" loading="lazy"></div>
+        <div class="phone reveal from-right" style="--d:.12s"><img src="img/lista.webp" alt="La lista della spesa con gli urgenti in cima" width="540" height="1169" loading="lazy"></div>
+      </div>
+    </article>
+
+    <article class="feature">
+      <div class="text reveal">
+        <span class="step">7 · Codici a barre</span>
+        <h3>Al supermercato, basta inquadrare</h3>
+        <p>La fotocamera legge il codice a barre di un prodotto e l'app fa il resto: spunta la lista della spesa o carica la dispensa. Tutto sul telefono, senza rete.</p>
+        <ul>
+          <li><b>La prima volta gli dici cos'è.</b> Un codice sconosciuto apre «A cosa corrisponde?»: scrivi due lettere e l'app suggerisce gli alimenti della tua dispensa. Poi «Salva e applica» (lo ricorda) oppure «Solo questa volta».</li>
+          <li><b>Dalle volte dopo basta un tocco.</b> La riga della lista si spunta da sola con la quantità della confezione, e puoi annullare. Lo stesso codice inquadrato ancora conta una confezione in più.</li>
+          <li><b>Anche per la dispensa.</b> La confezione si somma all'alimento, oppure lo crea. Se l'unità è diversa, l'app converte con le equivalenze di misura che hai indicato; se non può, ti avvisa invece di indovinare.</li>
+          <li>Funziona con i codici dei prodotti confezionati (EAN e UPC), anche inquadrati storti o capovolti. I prodotti a peso del banco si spuntano a mano.</li>
+        </ul>
+        <p class="note">Nessuna rete e nessun archivio esterno di prodotti: quello che insegni all'app resta sul tuo telefono.</p>
+      </div>
+      <div class="phones">
+        <div class="phone reveal from-left"><img src="img/codice.webp" alt="A cosa corrisponde? Il codice a barre si associa agli alimenti" width="540" height="1169" loading="lazy"></div>
+        <div class="phone reveal from-right" style="--d:.12s"><img src="img/lista-spuntata.webp" alt="La lista della spesa spuntata dopo la scansione" width="540" height="1169" loading="lazy"></div>
+      </div>
+    </article>
+
+    <article class="feature flip">
+      <div class="text reveal">
+        <span class="step">8 · Attività fisica</span>
+        <h3>La costanza si vede</h3>
+        <p>Un'attività a scelta (camminata, corsa, palestra, bici, nuoto, yoga o un nome libero) e un obiettivo da 1 a 7 volte a settimana.</p>
+        <ul>
+          <li>Si segna con un tocco, dal Piano o dalla scheda Attività: settimane consecutive, record, ultime 12 settimane.</li>
+          <li>40 medaglie da sbloccare con la costanza, alcune a sorpresa. Solo una spunta: niente durata, niente calorie.</li>
+        </ul>
+      </div>
+      <div class="phones">
+        <div class="phone reveal from-left"><img src="img/attivita.webp" alt="Attività: settimane consecutive e record" width="540" height="1169" loading="lazy"></div>
+        <div class="phone reveal from-right" style="--d:.12s"><img src="img/medaglie.webp" alt="Le medaglie sbloccate" width="540" height="1169" loading="lazy"></div>
+      </div>
+    </article>
+
+    <article class="feature">
+      <div class="text reveal">
+        <span class="step">9 · Personalizzazione e notifiche</span>
+        <h3>Si adatta alla tua routine</h3>
+        <ul>
+          <li>Nome e orario di ogni pasto, anche diverso nel fine settimana; ogni pasto si accende o si spegne, e se ne aggiungono altri (per esempio una merenda).</li>
+          <li>Sei temi grafici classici: Predefinito, Blu, Scuro, Ocra, Salvia e Mirtillo.</li>
+          <li>Notifiche: una per pasto, i promemoria di preparazione, la spesa urgente e l'attività solo se sei indietro con l'obiettivo. Gli stessi avvisi compaiono anche dentro il Piano.</li>
+          <li>Nessun tutorial da sfogliare: un consiglio piccolo la prima volta su ogni schermata, e la guida «Come funziona l'app» sempre in Impostazioni.</li>
+        </ul>
+      </div>
+      <div class="phones">
+        <div class="phone reveal from-left"><img src="img/pasti.webp" alt="Impostazioni: nome e orario dei pasti" width="540" height="1169" loading="lazy"></div>
+        <div class="phone reveal from-right" style="--d:.12s"><img src="img/ocra.webp" alt="Il piano con il tema Ocra" width="540" height="1169" loading="lazy"></div>
+      </div>
+    </article>
+
+    <article class="feature flip">
+      <div class="text reveal">
+        <span class="step">10 · Temi speciali e icone</span>
+        <h3>Un tocco di carattere</h3>
+        <p>In Impostazioni › Tema ci sono anche tre temi speciali: cambiano colori, bordi, sfondi e font dei titoli.</p>
+        <ul>
+          <li><b>Fumetto</b>: bordi neri spessi, colori pieni e titoli da copertina.</li>
+          <li><b>Quaderno</b>: sfondo a quadretti e titoli scritti a mano.</li>
+          <li><b>Sala giochi</b>: toni scuri e titoli in stile pixel.</li>
+        </ul>
+        <p>Gli alimenti hanno una loro icona e puoi scegliere come disegnarla: come il tema, 3D, Fumetto, Quaderno o Pixel.</p>
+        <div class="icons-grid reveal" aria-label="Le stesse icone in quattro stili">
+          <span>3D</span><img src="img/icons/3d-avocado.webp" alt="" loading="lazy"><img src="img/icons/3d-strawberry.webp" alt="" loading="lazy"><img src="img/icons/3d-croissant.webp" alt="" loading="lazy"><img src="img/icons/3d-salmon.webp" alt="" loading="lazy">
+          <span>Fumetto</span><img src="img/icons/fumetto-avocado.webp" alt="" loading="lazy"><img src="img/icons/fumetto-strawberry.webp" alt="" loading="lazy"><img src="img/icons/fumetto-croissant.webp" alt="" loading="lazy"><img src="img/icons/fumetto-salmon.webp" alt="" loading="lazy">
+          <span>Quaderno</span><img src="img/icons/quaderno-avocado.webp" alt="" loading="lazy"><img src="img/icons/quaderno-strawberry.webp" alt="" loading="lazy"><img src="img/icons/quaderno-croissant.webp" alt="" loading="lazy"><img src="img/icons/quaderno-salmon.webp" alt="" loading="lazy">
+          <span>Pixel</span><img src="img/icons/pixel-avocado.webp" alt="" loading="lazy"><img src="img/icons/pixel-strawberry.webp" alt="" loading="lazy"><img src="img/icons/pixel-croissant.webp" alt="" loading="lazy"><img src="img/icons/pixel-salmon.webp" alt="" loading="lazy">
+        </div>
+      </div>
+      <div class="phones three">
+        <div class="phone reveal from-left"><img src="img/fumetto.webp" alt="Tema Fumetto" width="540" height="1169" loading="lazy"></div>
+        <div class="phone reveal" style="--d:.1s"><img src="img/quaderno.webp" alt="Tema Quaderno" width="540" height="1169" loading="lazy"></div>
+        <div class="phone reveal from-right" style="--d:.2s"><img src="img/salagiochi.webp" alt="Tema Sala giochi" width="540" height="1169" loading="lazy"></div>
+      </div>
+    </article>
+
+    <article class="feature">
+      <div class="text reveal">
+        <span class="step">11 · Misure e dati al sicuro</span>
+        <h3>I numeri tornano, i dati non si perdono</h3>
+        <ul>
+          <li><b>Equivalenze di misura.</b> Per un alimento puoi scrivere, per esempio, «1 pz = 60 g», e vale nei due versi. Dieta, dispensa, lista, notifiche e codici a barre usano la stessa conversione.</li>
+          <li><b>Backup in un file.</b> Da Impostazioni › Backup dei dati salvi tutto in un unico file, nel punto che scegli tu: la cartella Download, per esempio, o un servizio cloud. Per ripristinarlo lo importi, e con «Torna ai dati di prima» puoi annullare.</li>
+          <li><b>Salvataggio sicuro.</b> L'app tiene sempre l'ultima versione buona di ogni file: se un file si rovina, torna da lì invece di perdersi.</li>
+        </ul>
+        <p class="note">Il backup è un file tuo: l'app non lo invia a nessuno e resta dove lo metti.</p>
+      </div>
+      <div class="phones">
+        <div class="phone reveal from-left"><img src="img/equivalenze.webp" alt="Equivalenze di misura: 1 pezzo uguale 60 grammi" width="540" height="1169" loading="lazy"></div>
+        <div class="phone reveal from-right" style="--d:.12s"><img src="img/backup.webp" alt="Backup dei dati in un file" width="540" height="1169" loading="lazy"></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ PER NUTRIZIONISTI ============ -->
+<section class="block dark" id="nutrizionisti">
+  <div class="wrap">
+    <span class="eyebrow reveal">Per nutrizionisti e dietisti</span>
+    <h2 class="reveal">Le Sue indicazioni non restano in fondo al foglio.</h2>
+    <p class="lead reveal">Il mio menù accompagna il paziente tra una visita e l'altra: mostra il piano che Lei ha elaborato, ricorda cosa preparare, compila la lista della spesa e rende visibile la costanza.</p>
+    <div class="cards c3">
+      <div class="card reveal"><h3>Cosa non fa</h3><ul>
+        <li>Non è un dispositivo medico e non dà indicazioni mediche.</li>
+        <li>Non genera diete e non calcola calorie.</li>
+        <li>Non cambia le dosi fuori dalla tabella che Lei ha indicato.</li>
+        <li>Non impedisce al paziente di modificare la dieta: ogni modifica chiede conferma e si può ripristinare la Sua.</li>
+      </ul></div>
+      <div class="card reveal" style="--d:.1s"><h3>Privacy</h3><ul>
+        <li>Nessuna registrazione e nessun account.</li>
+        <li>Dieta, dispensa, note, attività e codici a barre restano sul telefono del paziente; il backup, se lo fa, è un file che salva lui.</li>
+        <li>Nessun dato sulla dieta viene inviato: la connessione serve solo agli acquisti facoltativi, gestiti da Google Play.</li>
+        <li>Lei non riceve dati: è il paziente a mostrarLe l'app alla visita.</li>
+      </ul></div>
+      <div class="card reveal" style="--d:.2s"><h3>Limiti di oggi</h3><ul>
+        <li>Solo Android, in arrivo su Google Play.</li>
+        <li>Il backup si fa a mano: un file salvato dalle impostazioni e importato sul nuovo telefono. Non c'è un salvataggio automatico su un mio server.</li>
+        <li>I codici a barre non servono per i prodotti a peso del banco. Le unità si convertono solo con le equivalenze indicate, oltre a grammi/millilitri e chili/litri.</li>
+        <li>Attività fisica e medaglie non si possono ancora nascondere. Se per alcuni pazienti non sono adatte, mi farebbe piacere saperlo.</li>
+      </ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRIVACY ============ -->
+<section class="block cream" id="privacy">
+  <div class="wrap">
+    <span class="eyebrow reveal">Privacy</span>
+    <h2 class="reveal">I tuoi dati restano tuoi.</h2>
+    <div class="cards c4">
+      <div class="card reveal"><h3>Nessun account</h3><p>Non ti chiediamo nome, email o altri dati personali.</p></div>
+      <div class="card reveal" style="--d:.08s"><h3>Solo sul telefono</h3><p>Dieta, dispensa, note e codici a barre non lasciano il tuo dispositivo.</p></div>
+      <div class="card reveal" style="--d:.16s"><h3>Nessuna pubblicità</h3><p>Niente annunci né tracciamento dell'uso.</p></div>
+      <div class="card reveal" style="--d:.24s"><h3>Acquisti facoltativi</h3><p>Gestiti da Google Play. Il resto dell'app è gratuito.</p></div>
+    </div>
+    <p class="reveal" style="margin-top:28px;color:var(--soft)">La fotocamera serve solo a leggere i QR della dieta e i codici a barre dei prodotti.</p>
+    <p class="reveal" style="margin-top:14px"><a href="privacy.html"><b>Leggi l'informativa completa sulla privacy</b></a></p>
+  </div>
+</section>
+
+<!-- ============ CHI SONO ============ -->
+<section class="block peach">
+  <div class="wrap about">
+    <img class="avatar reveal zoom" src="img/icon-192.png" alt="" width="140" height="140" loading="lazy">
+    <div>
+      <span class="eyebrow reveal">Chi sono</span>
+      <h2 class="reveal">Un progetto nato in casa.</h2>
+      <p class="lead reveal">Sono Gianluca Sperduto, ingegnere: vengo da Ingegneria Informatica e Automatica alla Sapienza, dove ho conseguito la laurea magistrale in Control Engineering. Il mio menù è nato per una persona della mia famiglia che segue un piano nutrizionale: volevo che quel foglio diventasse qualcosa di più facile da seguire ogni giorno. Oggi la usiamo tutti i giorni, e ogni funzione è nata da un problema concreto.</p>
+      <p class="lead reveal">Se l'app ti sembra utile, o vedi qualcosa da correggere, scrivimi: ogni osservazione diventa una modifica concreta. <a href="mailto:gianlucasperduto2@gmail.com">gianlucasperduto2@gmail.com</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TEST ============ -->
+<section class="block dark" id="test">
+  <div class="wrap test">
+    <div>
+      <span class="eyebrow reveal">Test su Google Play</span>
+      <h2 class="reveal">Vuoi provarla in anteprima?</h2>
+      <p class="lead reveal">L'app è in fase di test e di approvazione su Google Play. Se vuoi partecipare al test, scrivimi con l'indirizzo email del tuo account Google: ti aggiungo ai tester.</p>
+    </div>
+    <form class="tform reveal" id="tf" novalidate>
+      <label>La tua email (account Google)
+        <input type="email" id="te" placeholder="nome@gmail.com" autocomplete="email" required aria-describedby="terr">
+      </label>
+      <p class="err" id="terr" role="alert"></p>
+      <label>Messaggio
+        <textarea id="tm">Voglio partecipare al test con questa mail: </textarea>
+      </label>
+      <button class="btn primary" type="submit">Invia la richiesta</button>
+      <p class="small">Si apre il tuo programma di posta con il messaggio già pronto: basta premere invio. Se non si apre, scrivimi a <a href="mailto:gianlucasperduto2@gmail.com" style="color:var(--on-dark)">gianlucasperduto2@gmail.com</a>.</p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><b style="color:var(--on-dark)">Il mio menù: dieta e spesa</b><br>Progetto indipendente di Gianluca Sperduto.</div>
+    <nav aria-label="Piè di pagina">
+      <a href="mailto:gianlucasperduto2@gmail.com">gianlucasperduto2@gmail.com</a>
+      <a href="privacy.html">Informativa sulla privacy</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>
