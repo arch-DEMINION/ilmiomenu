@@ -98,6 +98,9 @@ b, strong { font-weight: 800; }
 .phones.three .phone { max-width: 220px; }
 .phones.three .phone:nth-child(2) { margin-top: 28px; }
 .phones.three .phone:nth-child(3) { margin-top: 56px; }
+.phones.five { flex-wrap: wrap; row-gap: 24px; }
+.phones.five .phone { flex: 0 0 calc((100% - 32px) / 3); }
+.phones.five .phone:nth-child(4), .phones.five .phone:nth-child(5) { margin-top: 0; }
 
 /* ---------- hero ---------- */
 .dark { background: var(--dark); color: var(--on-dark); }
@@ -184,6 +187,10 @@ section { position: relative; overflow-x: clip; }
 .icons-grid { display: grid; grid-template-columns: auto repeat(4, 1fr); gap: 10px 12px; align-items: center; margin-top: 22px; max-width: 420px; }
 .icons-grid span { font-size: 14px; font-weight: 800; color: var(--soft); }
 .icons-grid img { width: 100%; max-width: 64px; aspect-ratio: 1; justify-self: center; }
+/* Neon and Progetto icons are light lines made for a dark page: shown on their theme's background. */
+.icons-grid img.ic-neon, .icons-grid img.ic-progetto { border-radius: 12px; padding: 4px; }
+.icons-grid img.ic-neon { background: #140C28; }
+.icons-grid img.ic-progetto { background: #18468C; }
 
 /* ---------- privacy, chi sono, test ---------- */
 .about { display: grid; gap: 32px; align-items: center; }
