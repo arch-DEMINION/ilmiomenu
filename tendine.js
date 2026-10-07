@@ -80,8 +80,32 @@
     else view.scrollTo({ left: x, behavior: instant ? "auto" : "smooth" });
   }
 
+  // Blocco morbido sul telefono: quando il dito si ferma, la scheda più vicina scivola al centro.
+  var touchDev = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+  var touching = false, idle, snapping = false;
+  function schedule() { clearTimeout(idle); idle = setTimeout(snap, 140); }
+  function snap() {
+    if (!pinned || touching || snapping) return;
+    var r = pin.getBoundingClientRect(), top = -r.top, span = r.height - window.innerHeight;
+    if (top <= 4 || top >= span - 4) return; // solo dentro la sezione, mai all'entrata o all'uscita
+    var x = shift(), best = 0, bd = Infinity;
+    for (var i = 0; i < N; i++) { var d = Math.abs(xOf(i) - x); if (d < bd) { bd = d; best = i; } }
+    if (bd < 3) return;
+    snapping = true;
+    goX(xOf(best));
+    setTimeout(function () { snapping = false; }, 650);
+  }
+  if (touchDev) {
+    window.addEventListener("touchstart", function () { touching = true; clearTimeout(idle); }, { passive: true });
+    window.addEventListener("touchend", function () { touching = false; schedule(); }, { passive: true });
+    window.addEventListener("touchcancel", function () { touching = false; schedule(); }, { passive: true });
+  }
+
   var tick = false;
-  function onScroll() { if (!tick) { tick = true; requestAnimationFrame(function () { tick = false; draw(); }); } }
+  function onScroll() {
+    if (touchDev) schedule();
+    if (!tick) { tick = true; requestAnimationFrame(function () { tick = false; draw(); }); }
+  }
   window.addEventListener("scroll", onScroll, { passive: true });
   view.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("resize", layout);
