@@ -432,3 +432,44 @@ footer nav a { min-height: 44px; display: inline-flex; align-items: center; }
 .istyle { min-width: 0; }
 .istyle-h { flex-wrap: wrap; row-gap: 2px; }
 @media (max-width: 480px) { .istyle { padding: 12px 10px 14px; } .istyle-h { font-size: 15px; } }
+
+/* ---------- Animazioni legate alla rotella (solo con JS e senza «riduci movimento») ---------- */
+.pin, .gallery-fallback ~ .pin { display: none; }
+.pinon .pin { display: block; height: var(--h, 360vh); margin-top: 40px; }
+.pinon .gallery-fallback, .pinon .istyles-note { display: none; }
+.pin-stage { position: sticky; top: 0; height: 100vh; min-height: 560px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 76px 0 24px; transition: background-color .5s; }
+.pin-stage h3 { font-size: clamp(26px, 5vw, 38px); margin-bottom: 8px; }
+.pin-hint { margin-top: 14px; font-size: 14px; color: var(--soft); letter-spacing: .04em; }
+.pin-hint::after { content: " ↓"; display: inline-block; animation: nudge 1.6s ease-in-out infinite; }
+@keyframes nudge { 50% { transform: translateY(4px); } }
+.idots { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; max-width: 640px; margin-top: 14px; }
+.idots span { font-size: 13px; font-weight: 700; padding: 5px 11px; border-radius: 999px; background: rgba(0, 0, 0, .06); color: var(--soft); transition: background .3s, color .3s, transform .3s; }
+.idots span.on { background: var(--accent); color: var(--dark); transform: scale(1.1); }
+
+/* icone */
+.pin-icons .pin-stage { background: transparent; }
+.itile { --tile: #fff; display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(6px, 2vw, 22px); padding: clamp(14px, 3vw, 30px); border-radius: 32px; background: var(--tile); width: min(680px, 94vw); margin-top: 18px; box-shadow: 0 20px 50px rgba(21, 16, 12, .16); transition: background-color .45s; }
+.islot { position: relative; aspect-ratio: 1; }
+.islot img { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; will-change: transform, opacity; }
+.iname { margin-top: 18px; font-size: clamp(26px, 5vw, 38px); display: flex; align-items: center; gap: 10px; min-height: 48px; }
+.iname b { font-weight: 800; }
+.iname em { font-style: normal; font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; background: var(--accent); color: var(--dark); border-radius: 999px; padding: 3px 9px; }
+.iname em[hidden] { display: none; }
+
+/* temi speciali */
+.pin-themes { --stage: #FFF4D6; }
+.pin-themes .pin-stage { background: var(--stage); border-radius: 0; color: #fff; }
+.pin-themes.lightbg .pin-stage { color: var(--ink); }
+.pin-themes .pin-stage .eyebrow { color: inherit; opacity: .75; }
+.pin-themes .pin-hint, .pin-themes .idots span { color: inherit; }
+.pin-themes .idots span { background: rgba(127, 127, 127, .22); }
+.pin-themes .idots span.on { background: var(--accent); color: var(--dark); }
+.deck { position: relative; width: min(100%, 760px); height: min(58vh, 560px); margin-top: 10px; perspective: 1200px; }
+.dphone { position: absolute; left: 50%; top: 0; height: 100%; aspect-ratio: 540 / 1169; margin-left: calc(min(58vh, 560px) * 540 / 1169 / -2); will-change: transform, opacity; }
+.dphone .phone { height: 100%; max-width: none; width: 100%; }
+.dphone .phone img { height: 100%; }
+.deck-cap { margin-top: 18px; max-width: 520px; padding: 0 var(--gutter); min-height: 74px; }
+.deck-cap b { display: block; font-size: clamp(24px, 4.5vw, 32px); }
+.deck-cap span { display: block; margin-top: 4px; font-size: 16px; opacity: .85; }
+@media (max-width: 899px) { .pin-themes .pin-stage { margin: 0 calc(var(--gutter) * -1); } }
+@media (max-width: 520px) { .itile { border-radius: 22px; } .idots span { font-size: 12px; padding: 4px 9px; } }
