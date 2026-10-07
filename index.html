@@ -15,8 +15,10 @@
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="img/icon-192.png">
 <link rel="preload" href="fonts/Nunito-Bold.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="stylesheet" href="styles.css?v=4">
+<link rel="stylesheet" href="styles.css?v=5">
 <script src="site.js?v=3" defer></script>
+<script src="spesa.js?v=1" defer></script>
+<script src="temi.js?v=1" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Vai al contenuto</a>
@@ -27,6 +29,7 @@
     <a class="brand" href="#"><img src="img/icon.webp" alt="" width="34" height="34"><span>Il mio menù</span></a>
     <nav aria-label="Principale">
       <a class="hide-s" href="#funzioni">Funzioni</a>
+      <a class="hide-s" href="#temi">Temi</a>
       <a class="hide-s keep" href="privacy.html">Privacy</a>
       <a class="btn" href="#test">Provala</a>
     </nav>
@@ -65,13 +68,13 @@
     <p class="lead reveal">Il mio menù non inventa diete: mostra il piano che ti ha dato il professionista, al momento giusto, e ti toglie la fatica di organizzarlo.</p>
     <div class="cards c3">
       <div class="card reveal"><div class="num">1</div><h3>Sai sempre cosa fare</h3><p>Il pasto di adesso, con alimenti e grammature, e cosa preparare in anticipo. Senza cercare il foglio.</p></div>
-      <div class="card reveal" style="--d:.1s"><div class="num">2</div><h3>La spesa si scrive da sola</h3><p>L'app confronta il piano con ciò che hai in dispensa e prepara la lista di quello che manca. Al supermercato basta inquadrare il codice a barre per spuntarla.</p></div>
+      <div class="card reveal" style="--d:.1s"><div class="num">2</div><h3>La spesa si scrive da sola</h3><p>L'app confronta il piano con ciò che hai in dispensa e prepara la lista di quello che manca. Al supermercato basta inquadrare il codice a barre per spuntarla, e se non vai tu la mandi su WhatsApp a chi fa la spesa.</p></div>
       <div class="card reveal" style="--d:.2s"><div class="num">3</div><h3>La costanza si vede</h3><p>Pasti segnati, obiettivo di attività fisica settimanale e settimane consecutive raggiunte.</p></div>
     </div>
     <div class="stats reveal">
       <div class="stat"><b data-count="7">7</b><span>giorni di spesa calcolati in anticipo</span></div>
       <div class="stat"><b data-count="40">40</b><span>medaglie da sbloccare con la costanza</span></div>
-      <div class="stat"><b data-count="11">11</b><span>temi grafici, cinque speciali</span></div>
+      <div class="stat"><b data-count="16">16</b><span>temi grafici, otto speciali</span></div>
       <div class="stat"><b data-count="100" data-suffix="%">100%</b><span>dei tuoi dati restano sul telefono</span></div>
     </div>
   </div>
@@ -196,6 +199,7 @@
           <li>La lista contiene ciò che serve per i prossimi sette giorni, meno ciò che c'è già. In cima gli urgenti: oggi e domani.</li>
           <li>Spuntare significa «nel carrello»; con «Finito» tutto entra in dispensa. Puoi aggiungere articoli extra e anche cibi che la dieta non chiede.</li>
           <li>Una notifica (di norma alle 9, 15 e 18) avvisa solo se manca davvero qualcosa per oggi o domani.</li>
+          <li><b>La lista si manda come messaggio</b> a chi fa la spesa al posto tuo: vedi sotto.</li>
         </ul>
       </div>
       <div class="phones">
@@ -204,9 +208,43 @@
       </div>
     </article>
 
-    <article class="feature">
+    <article class="feature" id="manda">
       <div class="text reveal">
-        <span class="step">7 · Codici a barre</span>
+        <span class="step">7 · Manda la spesa</span>
+        <h3>Non vai tu? Mandala su WhatsApp</h3>
+        <p>Dalla lista, il tasto «Manda» prepara un messaggio già ordinato, con i titoli in grassetto e una riga per alimento. Lo invii a chi fa la spesa al posto tuo con WhatsApp, Telegram o un SMS.</p>
+        <ul>
+          <li><b>Solo urgenti</b> (quello che serve per oggi e domani) oppure <b>tutta la lista</b>.</li>
+          <li>Vedi l'<b>anteprima</b> del messaggio prima di inviarlo, oppure lo copi e lo incolli dove vuoi.</li>
+          <li>Vanno nel messaggio solo le cose che <b>mancano ancora</b>: quelle già nel carrello restano fuori.</li>
+          <li>Nessun account e nessun server: il messaggio passa dal menù «Condividi» del telefono.</li>
+        </ul>
+        <p class="note">Prova qui a fianco: tocca gli alimenti per metterli nel carrello e guarda il messaggio cambiare.</p>
+      </div>
+      <div class="reveal zoom" style="--d:.1s">
+        <div class="sharedemo" id="sd" aria-label="Prova: manda la lista della spesa">
+          <div class="sd-list" role="group" aria-label="Lista della spesa di prova"></div>
+          <div class="sd-sheet">
+            <div class="sd-title">Manda la lista</div>
+            <div class="sd-choices" role="radiogroup" aria-label="Cosa mandare">
+              <button type="button" class="sd-choice" role="radio" data-mode="urgent"><b>Solo urgenti</b><small></small></button>
+              <button type="button" class="sd-choice on" role="radio" data-mode="all" aria-checked="true"><b>Tutta la lista</b><small></small></button>
+            </div>
+            <div class="sd-cap">Anteprima</div>
+            <div class="sd-chat"><div class="sd-bubble" aria-live="polite"></div><div class="sd-sent" aria-hidden="true">Inviato ✓✓</div></div>
+            <div class="sd-actions">
+              <button type="button" class="sd-copy">Copia</button>
+              <button type="button" class="sd-send">Invia</button>
+            </div>
+            <p class="sd-toast" role="status"></p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="feature flip">
+      <div class="text reveal">
+        <span class="step">8 · Codici a barre</span>
         <h3>Al supermercato, basta inquadrare</h3>
         <p>La fotocamera legge il codice a barre di un prodotto e l'app fa il resto: spunta la lista della spesa o carica la dispensa. Tutto sul telefono, senza rete.</p>
         <ul>
@@ -223,9 +261,9 @@
       </div>
     </article>
 
-    <article class="feature flip">
+    <article class="feature">
       <div class="text reveal">
-        <span class="step">8 · Attività fisica</span>
+        <span class="step">9 · Attività fisica</span>
         <h3>La costanza si vede</h3>
         <p>Un'attività a scelta (camminata, corsa, palestra, bici, nuoto, yoga o un nome libero) e un obiettivo da 1 a 7 volte a settimana.</p>
         <ul>
@@ -239,13 +277,13 @@
       </div>
     </article>
 
-    <article class="feature">
+    <article class="feature flip">
       <div class="text reveal">
-        <span class="step">9 · Personalizzazione e notifiche</span>
+        <span class="step">10 · Personalizzazione e notifiche</span>
         <h3>Si adatta alla tua routine</h3>
         <ul>
           <li>Nome e orario di ogni pasto, anche diverso nel fine settimana; ogni pasto si accende o si spegne, e se ne aggiungono altri (per esempio una merenda).</li>
-          <li>Sei temi grafici classici: Predefinito, Blu, Scuro, Ocra, Salvia e Mirtillo.</li>
+          <li>Otto temi grafici classici: Predefinito, Blu, Scuro, Ocra, Salvia, Mirtillo, Cipria e Prugna. E otto speciali, da provare qui sotto.</li>
           <li>Notifiche: una per pasto, i promemoria di preparazione, la spesa urgente e l'attività solo se sei indietro con l'obiettivo. Gli stessi avvisi compaiono anche dentro il Piano.</li>
           <li>Nessun tutorial da sfogliare: un consiglio piccolo la prima volta su ogni schermata, e la guida «Come funziona l'app» sempre in Impostazioni.</li>
         </ul>
@@ -253,37 +291,6 @@
       <div class="phones">
         <div class="phone reveal from-left"><img src="img/pasti.webp" alt="Impostazioni: nome e orario dei pasti" width="540" height="1169" loading="lazy"></div>
         <div class="phone reveal from-right" style="--d:.12s"><img src="img/ocra.webp" alt="Il piano con il tema Ocra" width="540" height="1169" loading="lazy"></div>
-      </div>
-    </article>
-
-    <article class="feature flip">
-      <div class="text reveal">
-        <span class="step">10 · Temi speciali e icone</span>
-        <h3>Un tocco di carattere</h3>
-        <p>In Impostazioni › Tema ci sono anche cinque temi speciali: cambiano colori, bordi, sfondi e font dei titoli.</p>
-        <ul>
-          <li><b>Fumetto</b>: bordi neri spessi, colori pieni e titoli da copertina.</li>
-          <li><b>Quaderno</b>: sfondo a quadretti e titoli scritti a mano.</li>
-          <li><b>Sala giochi</b>: toni scuri e titoli in stile pixel.</li>
-          <li><b>Neon</b>: muro scuro, insegne magenta e azzurre che si accendono.</li>
-          <li><b>Progetto</b>: linee bianche su carta blu, come un disegno tecnico.</li>
-        </ul>
-        <p>Gli alimenti hanno una loro icona e puoi scegliere come disegnarla: come il tema, 3D, Fumetto, Quaderno, Pixel, Neon o Progetto.</p>
-        <div class="icons-grid reveal" aria-label="Le stesse icone in sei stili">
-          <span>3D</span><img src="img/icons/3d-avocado.webp" alt="" loading="lazy"><img src="img/icons/3d-strawberry.webp" alt="" loading="lazy"><img src="img/icons/3d-croissant.webp" alt="" loading="lazy"><img src="img/icons/3d-salmon.webp" alt="" loading="lazy">
-          <span>Fumetto</span><img src="img/icons/fumetto-avocado.webp" alt="" loading="lazy"><img src="img/icons/fumetto-strawberry.webp" alt="" loading="lazy"><img src="img/icons/fumetto-croissant.webp" alt="" loading="lazy"><img src="img/icons/fumetto-salmon.webp" alt="" loading="lazy">
-          <span>Quaderno</span><img src="img/icons/quaderno-avocado.webp" alt="" loading="lazy"><img src="img/icons/quaderno-strawberry.webp" alt="" loading="lazy"><img src="img/icons/quaderno-croissant.webp" alt="" loading="lazy"><img src="img/icons/quaderno-salmon.webp" alt="" loading="lazy">
-          <span>Pixel</span><img src="img/icons/pixel-avocado.webp" alt="" loading="lazy"><img src="img/icons/pixel-strawberry.webp" alt="" loading="lazy"><img src="img/icons/pixel-croissant.webp" alt="" loading="lazy"><img src="img/icons/pixel-salmon.webp" alt="" loading="lazy">
-          <span>Neon</span><img class="ic-neon" src="img/icons/neon-avocado.webp" alt="" loading="lazy"><img class="ic-neon" src="img/icons/neon-strawberry.webp" alt="" loading="lazy"><img class="ic-neon" src="img/icons/neon-croissant.webp" alt="" loading="lazy"><img class="ic-neon" src="img/icons/neon-salmon.webp" alt="" loading="lazy">
-          <span>Progetto</span><img class="ic-progetto" src="img/icons/progetto-avocado.webp" alt="" loading="lazy"><img class="ic-progetto" src="img/icons/progetto-strawberry.webp" alt="" loading="lazy"><img class="ic-progetto" src="img/icons/progetto-croissant.webp" alt="" loading="lazy"><img class="ic-progetto" src="img/icons/progetto-salmon.webp" alt="" loading="lazy">
-        </div>
-      </div>
-      <div class="phones three five">
-        <div class="phone reveal from-left"><img src="img/fumetto.webp" alt="Tema Fumetto" width="540" height="1169" loading="lazy"></div>
-        <div class="phone reveal" style="--d:.1s"><img src="img/quaderno.webp" alt="Tema Quaderno" width="540" height="1169" loading="lazy"></div>
-        <div class="phone reveal from-right" style="--d:.2s"><img src="img/salagiochi.webp" alt="Tema Sala giochi" width="540" height="1169" loading="lazy"></div>
-        <div class="phone reveal from-left" style="--d:.1s"><img src="img/neon.webp" alt="Tema Neon" width="540" height="1169" loading="lazy"></div>
-        <div class="phone reveal from-right" style="--d:.2s"><img src="img/progetto.webp" alt="Tema Progetto" width="540" height="1169" loading="lazy"></div>
       </div>
     </article>
 
@@ -303,6 +310,55 @@
         <div class="phone reveal from-right" style="--d:.12s"><img src="img/backup.webp" alt="Backup dei dati in un file" width="540" height="1169" loading="lazy"></div>
       </div>
     </article>
+  </div>
+</section>
+
+<!-- ============ TEMI ============ -->
+<section class="block cream" id="temi">
+  <div class="wrap">
+    <span class="eyebrow reveal">Temi e stili</span>
+    <h2 class="reveal">Sedici temi: scegli quello della tua giornata.</h2>
+    <p class="lead reveal">Otto classici, chiari e scuri, e otto speciali che cambiano anche bordi, sfondi, font, spunte e coriandoli. Provali qui: è una piccola copia dell'app, tocca e guarda cosa succede.</p>
+
+    <div class="tlab">
+      <div class="tlab-phone reveal zoom">
+        <div class="phone"><div class="mockbox" id="mockbox"><div class="mock" id="mock" data-theme="default" aria-label="Anteprima interattiva dell'app">
+          <div class="m-head"><div class="m-title">Lista della spesa</div><div class="m-sub" id="m-sub">0 su 4 nel carrello</div></div>
+          <div class="m-card m-meal">
+            <div class="m-meal-t"><span>Pranzo · 13:00</span></div>
+            <div class="m-meal-n">Salmone con avocado</div>
+            <button type="button" class="m-btn" id="m-eat">Segna come mangiato</button>
+          </div>
+          <div class="m-sec">Urgenti · oggi e domani</div>
+          <div class="m-card m-list" id="m-list"></div>
+          <div class="m-done" id="m-done" hidden><div class="m-mascot"><img alt="" id="m-mascot-img" width="64" height="64"><img alt="" id="m-mascot-badge" class="m-badge" width="28" height="28"></div><div><b>Hai preso tutto!</b><span>Nel carrello c'è tutta la spesa.</span></div></div>
+          <div class="m-sec">Medaglie</div>
+          <div class="m-medals" id="m-medals"></div>
+          <div class="m-nav"><span>Piano</span><span>Dispensa</span><span class="on">Lista</span><span>Attività</span></div>
+          <div class="m-fx" id="m-fx" aria-hidden="true"></div>
+        </div></div></div>
+      </div>
+      <div class="tlab-ctl">
+        <h3 class="reveal">Temi classici</h3>
+        <div class="chips reveal" id="chips-classic" role="radiogroup" aria-label="Temi classici"></div>
+        <h3 class="reveal">Temi speciali</h3>
+        <div class="chips reveal" id="chips-special" role="radiogroup" aria-label="Temi speciali"></div>
+        <div class="tinfo reveal" id="tinfo" aria-live="polite"></div>
+        <h3 class="reveal">Stile delle icone</h3>
+        <p class="small-dark reveal">Gli alimenti hanno una loro icona e puoi sceglierne lo stile, indipendentemente dal tema. Nuovi: Adesivo, Pastello, Acquerello, Punto croce e Lucciola.</p>
+        <div class="chips reveal" id="chips-icons" role="radiogroup" aria-label="Stile delle icone"></div>
+        <p class="hint reveal"><b>Prova:</b> tocca gli alimenti per metterli nel carrello, poi «Segna come mangiato». Ogni tema festeggia a modo suo.</p>
+      </div>
+    </div>
+
+    <h3 class="gallery-h reveal">I primi cinque temi speciali, dal vivo</h3>
+    <div class="phones three five gallery">
+      <div class="phone reveal from-left"><img src="img/fumetto.webp" alt="Tema Fumetto" width="540" height="1169" loading="lazy"></div>
+      <div class="phone reveal" style="--d:.1s"><img src="img/quaderno.webp" alt="Tema Quaderno" width="540" height="1169" loading="lazy"></div>
+      <div class="phone reveal from-right" style="--d:.2s"><img src="img/salagiochi.webp" alt="Tema Sala giochi" width="540" height="1169" loading="lazy"></div>
+      <div class="phone reveal from-left" style="--d:.1s"><img src="img/neon.webp" alt="Tema Neon" width="540" height="1169" loading="lazy"></div>
+      <div class="phone reveal from-right" style="--d:.2s"><img src="img/progetto.webp" alt="Tema Progetto" width="540" height="1169" loading="lazy"></div>
+    </div>
   </div>
 </section>
 
