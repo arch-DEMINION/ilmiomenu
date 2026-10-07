@@ -15,11 +15,11 @@
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="img/icon-192.png">
 <link rel="preload" href="fonts/Nunito-Bold.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="stylesheet" href="styles.css?v=13">
+<link rel="stylesheet" href="styles.css?v=15">
 <script src="site.js?v=3" defer></script>
 <script src="temi.js?v=3" defer></script>
 <script src="scroll.js?v=4" defer></script>
-<script src="tendine.js?v=1" defer></script>
+<script src="tendine.js?v=2" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Vai al contenuto</a>
@@ -103,12 +103,18 @@
   <div class="wrap">
     <span class="eyebrow reveal">Le funzioni, una per una</span>
     <h2 class="reveal">Dalla dieta al piano di ogni giorno.</h2>
-    <p class="lead reveal">Tocca una funzione per aprirla: dentro trovi tutti i dettagli.</p>
-    <div class="acc-tools reveal"><button type="button" id="acc-all">Apri tutte</button></div>
+    <p class="lead reveal">Scorri di lato e tocca una scheda: si apre un cassetto con tutti i dettagli.</p>
 
-    <article class="acc" id="f1">
-      <h3><button type="button" class="acc-h" aria-expanded="false" aria-controls="p1"><span class="acc-n">1</span><span class="acc-t"><b>Arriva la dieta</b><small>Tre strade per riempire l'app</small></span><span class="acc-c" aria-hidden="true"></span></button></h3>
-      <div class="acc-p" id="p1"><div class="acc-in"><div class="feature">
+    <div class="fwrap">
+      <ul class="fstrip" id="fstrip">
+      <li class="fcard v0" id="f1">
+        <button type="button" class="fc-btn" data-n="1" aria-haspopup="dialog">
+          <span class="fc-img"><img class="fc-p1" src="img/primo-avvio.webp" alt="" width="540" height="1169" loading="lazy"><img class="fc-p2" src="img/qr.webp" alt="" width="540" height="1169" loading="lazy"></span>
+          <span class="fc-n">01</span>
+          <span class="fc-txt"><b>Arriva la dieta</b><small>Tre strade per riempire l'app</small></span>
+          <span class="fc-go" aria-hidden="true">Scopri<i></i></span>
+        </button>
+        <template id="t1" data-title="Arriva la dieta" data-sum="Tre strade per riempire l&#x27;app"><div class="feature">
       <div class="text">
         <p>Al primo avvio l'app è vuota: nessuna dieta preinstallata. Scegli tu come riempirla.</p>
         <ul>
@@ -122,11 +128,16 @@
         <div class="phone"><img src="img/primo-avvio.webp" alt="Primo avvio: inserisci la tua dieta" width="540" height="1169" loading="lazy"></div>
         <div class="phone"><img src="img/qr.webp" alt="Condividi la dieta con un codice QR" width="540" height="1169" loading="lazy"></div>
       </div>
-      </div></div></div>
-    </article>
-    <article class="acc" id="f2">
-      <h3><button type="button" class="acc-h" aria-expanded="false" aria-controls="p2"><span class="acc-n">2</span><span class="acc-t"><b>Modifica dieta</b><small>La dieta resta modificabile, con cautela</small></span><span class="acc-c" aria-hidden="true"></span></button></h3>
-      <div class="acc-p" id="p2"><div class="acc-in"><div class="feature flip">
+      </div></template>
+      </li>
+      <li class="fcard v1" id="f2">
+        <button type="button" class="fc-btn" data-n="2" aria-haspopup="dialog">
+          <span class="fc-img"><img class="fc-p1" src="img/modifica-dieta.webp" alt="" width="540" height="1169" loading="lazy"><img class="fc-p2" src="img/consigli-dieta.webp" alt="" width="540" height="1169" loading="lazy"></span>
+          <span class="fc-n">02</span>
+          <span class="fc-txt"><b>Modifica dieta</b><small>La dieta resta modificabile, con cautela</small></span>
+          <span class="fc-go" aria-hidden="true">Scopri<i></i></span>
+        </button>
+        <template id="t2" data-title="Modifica dieta" data-sum="La dieta resta modificabile, con cautela"><div class="feature flip">
       <div class="text">
         <p>Per ogni giorno: alimenti e quantità, nome del piatto, pasto libero. Un giorno si può copiare sugli altri.</p>
         <ul>
@@ -140,11 +151,16 @@
         <div class="phone"><img src="img/modifica-dieta.webp" alt="Modifica dieta: alimenti e grammature di un pasto" width="540" height="1169" loading="lazy"></div>
         <div class="phone"><img src="img/consigli-dieta.webp" alt="Consigli della dieta e alimenti in evidenza" width="540" height="1169" loading="lazy"></div>
       </div>
-      </div></div></div>
-    </article>
-    <article class="acc" id="f3">
-      <h3><button type="button" class="acc-h" aria-expanded="false" aria-controls="p3"><span class="acc-n">3</span><span class="acc-t"><b>Il piano del giorno</b><small>Cosa mangiare adesso, senza cercare il foglio</small></span><span class="acc-c" aria-hidden="true"></span></button></h3>
-      <div class="acc-p" id="p3"><div class="acc-in"><div class="feature">
+      </div></template>
+      </li>
+      <li class="fcard v2" id="f3">
+        <button type="button" class="fc-btn" data-n="3" aria-haspopup="dialog">
+          <span class="fc-img"><img class="fc-p1" src="img/piano.webp" alt="" width="540" height="1169" loading="lazy"><img class="fc-p2" src="img/prossimo-pasto.webp" alt="" width="540" height="1169" loading="lazy"></span>
+          <span class="fc-n">03</span>
+          <span class="fc-txt"><b>Il piano del giorno</b><small>Cosa mangiare adesso, senza cercare il foglio</small></span>
+          <span class="fc-go" aria-hidden="true">Scopri<i></i></span>
+        </button>
+        <template id="t3" data-title="Il piano del giorno" data-sum="Cosa mangiare adesso, senza cercare il foglio"><div class="feature">
       <div class="text">
         <p>All'apertura i pasti di oggi con alimenti e grammature, il prossimo pasto in evidenza. Con uno scorrimento laterale si passa al giorno dopo.</p>
         <ul>
@@ -158,11 +174,16 @@
         <div class="phone"><img src="img/piano.webp" alt="Il piano del giorno" width="540" height="1169" loading="lazy"></div>
         <div class="phone"><img src="img/prossimo-pasto.webp" alt="Il prossimo pasto in evidenza con l'olio nel riquadro dorato" width="540" height="1169" loading="lazy"></div>
       </div>
-      </div></div></div>
-    </article>
-    <article class="acc" id="f4">
-      <h3><button type="button" class="acc-h" aria-expanded="false" aria-controls="p4"><span class="acc-n">4</span><span class="acc-t"><b>Imprevisti</b><small>Flessibile, senza uscire dal piano</small></span><span class="acc-c" aria-hidden="true"></span></button></h3>
-      <div class="acc-p" id="p4"><div class="acc-in"><div class="feature flip">
+      </div></template>
+      </li>
+      <li class="fcard v3" id="f4">
+        <button type="button" class="fc-btn" data-n="4" aria-haspopup="dialog">
+          <span class="fc-img"><img class="fc-p1" src="img/sostituzioni.webp" alt="" width="540" height="1169" loading="lazy"><img class="fc-p2" src="img/scambia.webp" alt="" width="540" height="1169" loading="lazy"></span>
+          <span class="fc-n">04</span>
+          <span class="fc-txt"><b>Imprevisti</b><small>Flessibile, senza uscire dal piano</small></span>
+          <span class="fc-go" aria-hidden="true">Scopri<i></i></span>
+        </button>
+        <template id="t4" data-title="Imprevisti" data-sum="Flessibile, senza uscire dal piano"><div class="feature flip">
       <div class="text">
         <p>La tabella sostituzioni raccoglie gruppi di alimenti equivalenti alle dosi scritte. Senza tabella, nel Piano non compare nessuna sostituzione.</p>
         <ul>
@@ -178,11 +199,16 @@
         <div class="phone"><img src="img/sostituzioni.webp" alt="Sostituisci yogurt greco: kefir, yogurt bianco magro, skyr" width="540" height="1169" loading="lazy"></div>
         <div class="phone"><img src="img/scambia.webp" alt="Scambia il menù di venerdì con un altro giorno" width="540" height="1169" loading="lazy"></div>
       </div>
-      </div></div></div>
-    </article>
-    <article class="acc" id="f5">
-      <h3><button type="button" class="acc-h" aria-expanded="false" aria-controls="p5"><span class="acc-n">5</span><span class="acc-t"><b>Note sui pasti</b><small>Un diario per la visita</small></span><span class="acc-c" aria-hidden="true"></span></button></h3>
-      <div class="acc-p" id="p5"><div class="acc-in"><div class="feature">
+      </div></template>
+      </li>
+      <li class="fcard v4" id="f5">
+        <button type="button" class="fc-btn" data-n="5" aria-haspopup="dialog">
+          <span class="fc-img one"><img class="fc-p1" src="img/postit.webp" alt="" width="540" height="1169" loading="lazy"></span>
+          <span class="fc-n">05</span>
+          <span class="fc-txt"><b>Note sui pasti</b><small>Un diario per la visita</small></span>
+          <span class="fc-go" aria-hidden="true">Scopri<i></i></span>
+        </button>
+        <template id="t5" data-title="Note sui pasti" data-sum="Un diario per la visita"><div class="feature">
       <div class="text">
         <p>Su ogni pasto puoi attaccare un post-it: come ti sei sentito, una difficoltà, una domanda da fare. La nota vale per quel giorno oppure, con un interruttore, per ogni volta che quel pasto torna nella settimana.</p>
         <p class="note"><b>Per il professionista.</b> Alla visita il paziente arriva con esempi concreti, non solo ricordi. Le note restano sul suo telefono.</p>
@@ -190,11 +216,16 @@
       <div class="phones">
         <div class="phone"><img src="img/postit.webp" alt="Un post-it attaccato a un pasto" width="540" height="1169" loading="lazy"></div>
       </div>
-      </div></div></div>
-    </article>
-    <article class="acc" id="f6">
-      <h3><button type="button" class="acc-h" aria-expanded="false" aria-controls="p6"><span class="acc-n">6</span><span class="acc-t"><b>Dispensa e lista della spesa</b><small>In casa c'è ciò che serve</small></span><span class="acc-c" aria-hidden="true"></span></button></h3>
-      <div class="acc-p" id="p6"><div class="acc-in"><div class="feature flip">
+      </div></template>
+      </li>
+      <li class="fcard v5" id="f6">
+        <button type="button" class="fc-btn" data-n="6" aria-haspopup="dialog">
+          <span class="fc-img"><img class="fc-p1" src="img/dispensa.webp" alt="" width="540" height="1169" loading="lazy"><img class="fc-p2" src="img/lista.webp" alt="" width="540" height="1169" loading="lazy"></span>
+          <span class="fc-n">06</span>
+          <span class="fc-txt"><b>Dispensa e lista della spesa</b><small>In casa c'è ciò che serve</small></span>
+          <span class="fc-go" aria-hidden="true">Scopri<i></i></span>
+        </button>
+        <template id="t6" data-title="Dispensa e lista della spesa" data-sum="In casa c&#x27;è ciò che serve"><div class="feature flip">
       <div class="text">
         <ul>
           <li>La dispensa mostra gli alimenti per categoria con quantità, −/+ e ricerca; quelli finiti sono segnalati in cima e portano alla lista.</li>
@@ -210,11 +241,16 @@
         <div class="phone"><img src="img/dispensa.webp" alt="La dispensa con gli alimenti finiti in cima" width="540" height="1169" loading="lazy"></div>
         <div class="phone"><img src="img/lista.webp" alt="La lista della spesa con gli urgenti in cima" width="540" height="1169" loading="lazy"></div>
       </div>
-      </div></div></div>
-    </article>
-    <article class="acc" id="manda">
-      <h3><button type="button" class="acc-h" aria-expanded="false" aria-controls="p7"><span class="acc-n">7</span><span class="acc-t"><b>Manda la spesa</b><small>Non vai tu? Mandala su WhatsApp</small></span><span class="acc-c" aria-hidden="true"></span></button></h3>
-      <div class="acc-p" id="p7"><div class="acc-in"><div class="feature">
+      </div></template>
+      </li>
+      <li class="fcard v0" id="manda">
+        <button type="button" class="fc-btn" data-n="7" aria-haspopup="dialog">
+          <span class="fc-img"></span>
+          <span class="fc-n">07</span>
+          <span class="fc-txt"><b>Manda la spesa</b><small>Non vai tu? Mandala su WhatsApp</small></span>
+          <span class="fc-go" aria-hidden="true">Scopri<i></i></span>
+        </button>
+        <template id="t7" data-title="Manda la spesa" data-sum="Non vai tu? Mandala su WhatsApp"><div class="feature">
       <div class="text">
         <p>Dalla lista, il tasto «Manda» prepara un messaggio già ordinato, con i titoli in grassetto e una riga per alimento. Lo invii a chi fa la spesa al posto tuo con WhatsApp, Telegram o un SMS.</p>
         <ul>
@@ -250,11 +286,16 @@ Mercoledì 7 ottobre · 6 cose da prendere
           </div>
         </div>
       </div>
-      </div></div></div>
-    </article>
-    <article class="acc" id="f8">
-      <h3><button type="button" class="acc-h" aria-expanded="false" aria-controls="p8"><span class="acc-n">8</span><span class="acc-t"><b>Codici a barre</b><small>Al supermercato, basta inquadrare</small></span><span class="acc-c" aria-hidden="true"></span></button></h3>
-      <div class="acc-p" id="p8"><div class="acc-in"><div class="feature flip">
+      </div></template>
+      </li>
+      <li class="fcard v1" id="f8">
+        <button type="button" class="fc-btn" data-n="8" aria-haspopup="dialog">
+          <span class="fc-img"><img class="fc-p1" src="img/codice.webp" alt="" width="540" height="1169" loading="lazy"><img class="fc-p2" src="img/lista-spuntata.webp" alt="" width="540" height="1169" loading="lazy"></span>
+          <span class="fc-n">08</span>
+          <span class="fc-txt"><b>Codici a barre</b><small>Al supermercato, basta inquadrare</small></span>
+          <span class="fc-go" aria-hidden="true">Scopri<i></i></span>
+        </button>
+        <template id="t8" data-title="Codici a barre" data-sum="Al supermercato, basta inquadrare"><div class="feature flip">
       <div class="text">
         <p>La fotocamera legge il codice a barre di un prodotto e l'app fa il resto: spunta la lista della spesa o carica la dispensa. Tutto sul telefono, senza rete.</p>
         <ul>
@@ -269,11 +310,16 @@ Mercoledì 7 ottobre · 6 cose da prendere
         <div class="phone"><img src="img/codice.webp" alt="A cosa corrisponde? Il codice a barre si associa agli alimenti" width="540" height="1169" loading="lazy"></div>
         <div class="phone"><img src="img/lista-spuntata.webp" alt="La lista della spesa spuntata dopo la scansione" width="540" height="1169" loading="lazy"></div>
       </div>
-      </div></div></div>
-    </article>
-    <article class="acc" id="f9">
-      <h3><button type="button" class="acc-h" aria-expanded="false" aria-controls="p9"><span class="acc-n">9</span><span class="acc-t"><b>Attività fisica</b><small>La costanza si vede</small></span><span class="acc-c" aria-hidden="true"></span></button></h3>
-      <div class="acc-p" id="p9"><div class="acc-in"><div class="feature">
+      </div></template>
+      </li>
+      <li class="fcard v2" id="f9">
+        <button type="button" class="fc-btn" data-n="9" aria-haspopup="dialog">
+          <span class="fc-img"><img class="fc-p1" src="img/attivita.webp" alt="" width="540" height="1169" loading="lazy"><img class="fc-p2" src="img/medaglie.webp" alt="" width="540" height="1169" loading="lazy"></span>
+          <span class="fc-n">09</span>
+          <span class="fc-txt"><b>Attività fisica</b><small>La costanza si vede</small></span>
+          <span class="fc-go" aria-hidden="true">Scopri<i></i></span>
+        </button>
+        <template id="t9" data-title="Attività fisica" data-sum="La costanza si vede"><div class="feature">
       <div class="text">
         <p>Un'attività a scelta (camminata, corsa, palestra, bici, nuoto, yoga o un nome libero) e un obiettivo da 1 a 7 volte a settimana.</p>
         <ul>
@@ -285,11 +331,16 @@ Mercoledì 7 ottobre · 6 cose da prendere
         <div class="phone"><img src="img/attivita.webp" alt="Attività: settimane consecutive e record" width="540" height="1169" loading="lazy"></div>
         <div class="phone"><img src="img/medaglie.webp" alt="Le medaglie sbloccate" width="540" height="1169" loading="lazy"></div>
       </div>
-      </div></div></div>
-    </article>
-    <article class="acc" id="f10">
-      <h3><button type="button" class="acc-h" aria-expanded="false" aria-controls="p10"><span class="acc-n">10</span><span class="acc-t"><b>Personalizzazione e notifiche</b><small>Si adatta alla tua routine</small></span><span class="acc-c" aria-hidden="true"></span></button></h3>
-      <div class="acc-p" id="p10"><div class="acc-in"><div class="feature flip">
+      </div></template>
+      </li>
+      <li class="fcard v3" id="f10">
+        <button type="button" class="fc-btn" data-n="10" aria-haspopup="dialog">
+          <span class="fc-img"><img class="fc-p1" src="img/pasti.webp" alt="" width="540" height="1169" loading="lazy"><img class="fc-p2" src="img/ocra.webp" alt="" width="540" height="1169" loading="lazy"></span>
+          <span class="fc-n">10</span>
+          <span class="fc-txt"><b>Personalizzazione e notifiche</b><small>Si adatta alla tua routine</small></span>
+          <span class="fc-go" aria-hidden="true">Scopri<i></i></span>
+        </button>
+        <template id="t10" data-title="Personalizzazione e notifiche" data-sum="Si adatta alla tua routine"><div class="feature flip">
       <div class="text">
         <ul>
           <li>Nome e orario di ogni pasto, anche diverso nel fine settimana; ogni pasto si accende o si spegne, e se ne aggiungono altri (per esempio una merenda).</li>
@@ -302,11 +353,16 @@ Mercoledì 7 ottobre · 6 cose da prendere
         <div class="phone"><img src="img/pasti.webp" alt="Impostazioni: nome e orario dei pasti" width="540" height="1169" loading="lazy"></div>
         <div class="phone"><img src="img/ocra.webp" alt="Il piano con il tema Ocra" width="540" height="1169" loading="lazy"></div>
       </div>
-      </div></div></div>
-    </article>
-    <article class="acc" id="f11">
-      <h3><button type="button" class="acc-h" aria-expanded="false" aria-controls="p11"><span class="acc-n">11</span><span class="acc-t"><b>Misure e dati al sicuro</b><small>I numeri tornano, i dati non si perdono</small></span><span class="acc-c" aria-hidden="true"></span></button></h3>
-      <div class="acc-p" id="p11"><div class="acc-in"><div class="feature">
+      </div></template>
+      </li>
+      <li class="fcard v4" id="f11">
+        <button type="button" class="fc-btn" data-n="11" aria-haspopup="dialog">
+          <span class="fc-img"><img class="fc-p1" src="img/equivalenze.webp" alt="" width="540" height="1169" loading="lazy"><img class="fc-p2" src="img/backup.webp" alt="" width="540" height="1169" loading="lazy"></span>
+          <span class="fc-n">11</span>
+          <span class="fc-txt"><b>Misure e dati al sicuro</b><small>I numeri tornano, i dati non si perdono</small></span>
+          <span class="fc-go" aria-hidden="true">Scopri<i></i></span>
+        </button>
+        <template id="t11" data-title="Misure e dati al sicuro" data-sum="I numeri tornano, i dati non si perdono"><div class="feature">
       <div class="text">
         <ul>
           <li><b>Equivalenze di misura.</b> Per un alimento puoi scrivere, per esempio, «1 pz = 60 g», e vale nei due versi. Dieta, dispensa, lista, notifiche e codici a barre usano la stessa conversione.</li>
@@ -319,8 +375,12 @@ Mercoledì 7 ottobre · 6 cose da prendere
         <div class="phone"><img src="img/equivalenze.webp" alt="Equivalenze di misura: 1 pezzo uguale 60 grammi" width="540" height="1169" loading="lazy"></div>
         <div class="phone"><img src="img/backup.webp" alt="Backup dei dati in un file" width="540" height="1169" loading="lazy"></div>
       </div>
-      </div></div></div>
-    </article>
+      </div></template>
+      </li>
+      </ul>
+      <div class="fnav"><button type="button" class="fn-prev" aria-label="Schede precedenti"></button><button type="button" class="fn-next" aria-label="Schede successive"></button></div>
+    </div>
+  </div>
 </section>
 
 <!-- ============ TEMI ============ -->
@@ -497,5 +557,15 @@ Mercoledì 7 ottobre · 6 cose da prendere
     </nav>
   </div>
 </footer>
+<div class="drawer" id="drawer" hidden>
+  <div class="dr-shade" data-close></div>
+  <aside class="dr-panel" role="dialog" aria-modal="true" aria-labelledby="dr-title" tabindex="-1">
+    <div class="dr-top">
+      <div class="dr-ttl"><span id="dr-n">01</span><div><b id="dr-title"></b><small id="dr-sum"></small></div></div>
+      <div class="dr-btns"><button type="button" class="dr-prev" aria-label="Funzione precedente"></button><button type="button" class="dr-next" aria-label="Funzione successiva"></button><button type="button" class="dr-x" data-close aria-label="Chiudi"></button></div>
+    </div>
+    <div class="dr-body" id="dr-body"></div>
+  </aside>
+</div>
 </body>
 </html>
