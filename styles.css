@@ -664,3 +664,10 @@ html:not(.hp-on) .fcard:not(.open) .fc-btn { opacity: .85; }
 .swipe .pin-hint::after { content: " ↔"; animation: none; }
 .swipe .deck { height: min(56svh, 520px); }
 .swipe .dphone { margin-left: calc(min(56svh, 520px) * 540 / 1169 / -2); }
+
+/* PC: mentre una scheda si allarga o si stringe, il contenuto ha già la sua larghezza finale e viene solo scoperto:
+   niente testo che si riadatta a ogni fotogramma (era lento e brutto da vedere). */
+.hp-on .fcard:not(.open) .fc-btn { width: min(78vw, 290px); }
+.hp-on .fcard.open .fc-btn, .hp-on .fcard.open .fc-detail { width: var(--ow, 940px); flex: none; }
+.hp-on .fcard.open { contain: layout paint; }
+.hp-on .fcard { contain: layout; }
