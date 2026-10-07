@@ -1,5 +1,5 @@
-// Il mio menù — funzioni: scorrendo la pagina le schede scorrono di lato (sezione ferma), toccandone una si apre sul posto.
-// Tendine per le schede dei professionisti.
+// Il mio menù — funzioni: la pagina fa scorrere le schede di lato e ognuna si apre da sola al centro dello schermo.
+// Si può anche usare il cursore, le frecce o toccare una scheda. Più le tendine per le schede dei professionisti.
 (function () {
   document.querySelectorAll(".acc-card .acc-h").forEach(function (h) {
     h.addEventListener("click", function () {
@@ -11,38 +11,32 @@
 
   var pin = document.getElementById("hpin"), strip = document.getElementById("fstrip");
   if (!pin || !strip) return;
-  var root = document.documentElement;
+  var root = document.documentElement, stage = pin.querySelector(".hpin-stage"), view = pin.querySelector(".hp-view");
   var still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var view = pin.querySelector(".hp-view");
+  var pinned = !still; // la pagina guida le schede; altrimenti solo cursore, frecce e tocco
+  if (pinned) root.classList.add("hp-on");
   var cards = Array.prototype.slice.call(strip.querySelectorAll(".fcard"));
-  var dist = 0, mode = !still; // mode: la pagina guida lo scorrimento laterale; altrimenti la striscia scorre con il dito
-  if (mode) root.classList.add("hp-on");
+  var N = cards.length, cur = -1;
+  var range = document.getElementById("hp-range"), lab = document.getElementById("hp-n"), labT = document.getElementById("hp-t");
+  var prevB = document.querySelector(".hp-prev"), nextB = document.querySelector(".hp-next");
+  var GAP = 18, STEP_MIN = 300;
+  range.max = N - 1;
 
   function pinTop() { return pin.getBoundingClientRect().top + window.scrollY; }
+  function step() { return Math.max(STEP_MIN, window.innerHeight * 0.42); }
   function layout() {
-    if (!mode) { pin.style.height = ""; return; }
-    dist = Math.max(0, strip.scrollWidth - view.clientWidth);
-    pin.style.height = (window.innerHeight + dist) + "px";
-    draw();
+    var ow = Math.min(1000, window.innerWidth - 36);
+    stage.style.setProperty("--ow", ow + "px");
+    if (pinned) pin.style.height = Math.round(window.innerHeight + (N - 1) * step()) + "px";
+    center(false);
   }
-  function draw() {
-    if (!mode) return;
-    var y = Math.max(0, Math.min(dist, -pin.getBoundingClientRect().top));
-    strip.style.transform = "translate3d(" + (-y).toFixed(1) + "px,0,0)";
-  }
-  var tick = false;
-  window.addEventListener("scroll", function () { if (!tick) { tick = true; requestAnimationFrame(function () { tick = false; draw(); }); } }, { passive: true });
-  window.addEventListener("resize", layout);
-  if ("ResizeObserver" in window) new ResizeObserver(layout).observe(strip);
-  layout();
 
-  // Porta la scheda a sinistra, dentro lo schermo.
-  function reveal(li) {
-    var pad = parseFloat(getComputedStyle(strip).paddingLeft) || 0;
-    if (mode) {
-      var x = Math.max(0, Math.min(dist, li.offsetLeft - pad));
-      window.scrollTo({ top: pinTop() + x, behavior: "smooth" });
-    } else strip.scrollTo({ left: li.offsetLeft - pad, behavior: "smooth" });
+  // Sposta la striscia in modo che la scheda aperta stia al centro della vista.
+  function center() {
+    if (cur < 0) return;
+    var cw = Math.min(290, window.innerWidth * 0.78), ow = Math.min(1000, window.innerWidth - 36); // come in CSS: min(78vw, 290px) e --ow
+    var x = cur * (cw + GAP) + ow / 2;
+    strip.style.transform = "translate3d(" + Math.round(view.clientWidth / 2 - x) + "px,0,0)";
   }
 
   function fill(li) {
@@ -50,36 +44,70 @@
     d.textContent = "";
     d.appendChild(li.querySelector("template").content.cloneNode(true));
   }
-  function setOpen(li, open) {
-    var b = li.querySelector(".fc-btn");
-    b.setAttribute("aria-expanded", open ? "true" : "false");
-    li.classList.toggle("open", open);
-    if (open) fill(li);
-    else setTimeout(function () { if (!li.classList.contains("open")) li.querySelector(".fc-detail").textContent = ""; }, 450);
+  function setIndex(i) {
+    i = Math.max(0, Math.min(N - 1, i));
+    if (i === cur) return;
+    var old = cards[cur];
+    if (old) {
+      old.classList.remove("open");
+      old.querySelector(".fc-btn").setAttribute("aria-expanded", "false");
+      setTimeout(function () { if (!old.classList.contains("open")) old.querySelector(".fc-detail").textContent = ""; }, 520);
+    }
+    cur = i;
+    var li = cards[i];
+    li.classList.add("open");
+    li.querySelector(".fc-btn").setAttribute("aria-expanded", "true");
+    fill(li);
+    center();
+    range.value = i;
+    range.style.setProperty("--pct", (N > 1 ? i / (N - 1) * 100 : 0) + "%");
+    lab.textContent = (i + 1) + " / " + N;
+    labT.textContent = li.querySelector(".fc-t b").textContent;
+    prevB.disabled = i === 0; nextB.disabled = i === N - 1;
   }
-  function toggle(li) {
-    var willOpen = !li.classList.contains("open");
-    cards.forEach(function (c) { if (c !== li && c.classList.contains("open")) setOpen(c, false); });
-    setOpen(li, willOpen);
-    layout();
-    if (willOpen) { setTimeout(function () { layout(); reveal(li); }, 60); }
-    history.replaceState(null, "", willOpen ? "#" + li.id : location.pathname + location.search);
+
+  // Scorrimento della pagina -> scheda attiva.
+  var tick = false;
+  function fromScroll() {
+    tick = false;
+    if (!pinned) return;
+    var r = pin.getBoundingClientRect(), span = r.height - window.innerHeight;
+    if (r.top > window.innerHeight || r.bottom < 0) return;
+    var p = Math.max(0, Math.min(1, -r.top / span));
+    setIndex(Math.round(p * (N - 1)));
   }
-  cards.forEach(function (li) { li.querySelector(".fc-btn").addEventListener("click", function () { toggle(li); }); });
-  document.addEventListener("keydown", function (e) {
-    if (e.key !== "Escape") return;
-    var o = cards.filter(function (c) { return c.classList.contains("open"); })[0];
-    if (o) { toggle(o); o.querySelector(".fc-btn").focus(); }
+  window.addEventListener("scroll", function () { if (!tick) { tick = true; requestAnimationFrame(fromScroll); } }, { passive: true });
+  window.addEventListener("resize", function () { layout(); fromScroll(); });
+
+  // Cursore, frecce e tocco: in modalità «pagina guida» spostano la pagina, altrimenti cambiano scheda direttamente.
+  function goTo(i, instant) {
+    i = Math.max(0, Math.min(N - 1, i));
+    if (pinned) {
+      var span = pin.offsetHeight - window.innerHeight;
+      var inView = pin.getBoundingClientRect().top <= 0 && pin.getBoundingClientRect().bottom >= window.innerHeight;
+      window.scrollTo({ top: pinTop() + span * (i / (N - 1)) + 1, behavior: instant || !inView ? "auto" : "smooth" });
+      if (!inView) setIndex(i);
+    } else setIndex(i);
+  }
+  range.addEventListener("input", function () { goTo(+range.value, true); });
+  prevB.addEventListener("click", function () { goTo(cur - 1); });
+  nextB.addEventListener("click", function () { goTo(cur + 1); });
+  cards.forEach(function (li, i) { li.querySelector(".fc-btn").addEventListener("click", function () { if (i !== cur) goTo(i); }); });
+  stage.addEventListener("keydown", function (e) {
+    if (e.target === range) return; // il cursore usa già le sue frecce
+    if (e.key === "ArrowLeft") { goTo(cur - 1); e.preventDefault(); }
+    else if (e.key === "ArrowRight") { goTo(cur + 1); e.preventDefault(); }
   });
 
-  // Un link come #manda apre direttamente la scheda giusta.
+  layout();
+  setIndex(0);
+  // Un link come #manda porta direttamente a quella scheda.
   function fromHash() {
-    var id = location.hash.slice(1), li = id && cards.filter(function (c) { return c.id === id; })[0];
-    if (!li || li.classList.contains("open")) return;
-    window.scrollTo(0, pinTop());
-    setOpen(li, true); layout();
-    setTimeout(function () { layout(); reveal(li); }, 120);
+    var id = location.hash.slice(1), i = cards.findIndex(function (c) { return c.id === id; });
+    if (i < 0) return;
+    if (pinned) { window.scrollTo(0, pinTop()); setIndex(i); setTimeout(function () { goTo(i, true); }, 50); } else { document.getElementById("funzioni").scrollIntoView(); setIndex(i); }
   }
   window.addEventListener("hashchange", fromHash);
   fromHash();
+  fromScroll();
 })();

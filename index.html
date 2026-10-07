@@ -15,11 +15,11 @@
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="img/icon-192.png">
 <link rel="preload" href="fonts/Nunito-Bold.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="stylesheet" href="styles.css?v=19">
+<link rel="stylesheet" href="styles.css?v=24">
 <script src="site.js?v=3" defer></script>
 <script src="temi.js?v=3" defer></script>
 <script src="scroll.js?v=4" defer></script>
-<script src="tendine.js?v=3" defer></script>
+<script src="tendine.js?v=4" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Vai al contenuto</a>
@@ -369,7 +369,14 @@ Mercoledì 7 ottobre · 6 cose da prendere
         </li>
         </ul>
       </div>
-      <p class="pin-hint">Scorri per sfogliare le funzioni · tocca una scheda per aprirla</p>
+      <div class="hp-ctl">
+        <button type="button" class="hp-prev" aria-label="Funzione precedente"></button>
+        <div class="hp-sl">
+          <input type="range" id="hp-range" min="0" max="10" step="1" value="0" aria-label="Scorri le funzioni">
+          <div class="hp-lab"><b id="hp-n">1 / 11</b><span id="hp-t"></span></div>
+        </div>
+        <button type="button" class="hp-next" aria-label="Funzione successiva"></button>
+      </div>
     </div>
   </div>
 </section>
