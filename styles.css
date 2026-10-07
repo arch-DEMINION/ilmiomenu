@@ -477,3 +477,33 @@ footer nav a { min-height: 44px; display: inline-flex; align-items: center; }
 .idots button { border: 0; cursor: pointer; font-family: inherit; min-height: 32px; }
 .idots button:hover { background: var(--accent); color: var(--dark); }
 @media (pointer: coarse) { .idots button { min-height: 44px; padding: 8px 14px; } }
+
+/* ---------- Tendine ---------- */
+.acc { background: var(--white); border: 1px solid var(--line); border-radius: 20px; margin-top: 12px; overflow: hidden; transition: box-shadow .3s; }
+.acc.open { box-shadow: 0 14px 34px rgba(21, 16, 12, .1); }
+.acc > h3, .acc-card > h3 { font-size: inherit; margin: 0; letter-spacing: 0; }
+.acc-h { width: 100%; display: grid; grid-template-columns: auto 1fr auto; gap: 14px; align-items: center; min-height: 68px; padding: 14px 18px; background: none; border: 0; text-align: left; cursor: pointer; font: inherit; color: inherit; }
+.acc-h:hover { background: rgba(232, 137, 58, .07); }
+.acc-n { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; background: var(--peach); color: var(--accent-ink); font-weight: 800; }
+.acc-t b { display: block; font-size: 19px; line-height: 1.2; font-weight: 800; }
+.acc-t small { display: block; margin-top: 2px; font-size: 15px; line-height: 1.35; color: var(--soft); font-weight: 400; }
+.acc-c { width: 12px; height: 12px; margin-right: 6px; border: solid currentColor; border-width: 0 3px 3px 0; transform: rotate(45deg) translate(-2px, -2px); transition: transform .3s; opacity: .6; }
+.open > h3 .acc-c, .open > .acc-h .acc-c { transform: rotate(-135deg) translate(-2px, -2px); }
+.acc-p { display: grid; grid-template-rows: 0fr; visibility: hidden; transition: grid-template-rows .4s ease, visibility 0s .4s; }
+.acc-in { overflow: hidden; min-height: 0; }
+.open > .acc-p { grid-template-rows: 1fr; visibility: visible; transition-delay: 0s; }
+.acc-in .feature { padding: 8px 22px 30px; border-top: 0; gap: 28px; }
+@media (min-width: 900px) { .acc-in .feature { padding: 12px 32px 40px; gap: 48px; } }
+.acc-in .feature .text { padding-top: 4px; }
+.acc-tools { margin-top: 18px; }
+.acc-tools button { min-height: 44px; padding: 8px 18px; border-radius: 999px; border: 2px solid var(--line); background: var(--white); font: 800 15px Nunito, sans-serif; color: var(--accent-ink); cursor: pointer; }
+.acc-tools button:hover { border-color: var(--accent); }
+#funzioni .acc:first-of-type { margin-top: 28px; }
+
+/* Schede per i professionisti */
+.acc-card { padding: 0; align-self: start; }
+.acc-card .acc-h { min-height: 76px; padding: 18px 20px; grid-template-columns: 1fr auto; }
+.dark .acc-card .acc-t b { color: #fff; }
+.dark .acc-card .acc-t small { color: var(--on-dark-soft); }
+.acc-card .acc-in ul { margin: 0; padding: 0 20px 22px 40px; font-size: 16px; }
+.acc-card .acc-h:hover { background: rgba(255, 255, 255, .05); }
