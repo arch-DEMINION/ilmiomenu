@@ -67,20 +67,14 @@
     parent.appendChild(b);
     return b;
   }
-  var themeChips = {}, styleChips = {};
+  var themeChips = {};
   T.forEach(function (t) {
     var b = chip($(t[2] === "c" ? "chips-classic" : "chips-special"), t[1], t[0] === theme, { sw: swatch(t[0]), isNew: /^Nuovo/.test(t[4]) });
     b.addEventListener("click", function () { setTheme(t[0], true); });
     themeChips[t[0]] = b;
   });
-  STYLES.forEach(function (s) {
-    var b = chip($("chips-icons"), s[1], s[0] === styleChoice, { isNew: !!NEW_STYLES[s[0]] });
-    b.addEventListener("click", function () { styleChoice = s[0]; drawIcons(); markChips(); });
-    styleChips[s[0]] = b;
-  });
   function markChips() {
     Object.keys(themeChips).forEach(function (k) { var on = k === theme; themeChips[k].classList.toggle("on", on); themeChips[k].setAttribute("aria-checked", on); });
-    Object.keys(styleChips).forEach(function (k) { var on = k === styleChoice; styleChips[k].classList.toggle("on", on); styleChips[k].setAttribute("aria-checked", on); });
   }
 
   // ---------- tema ----------

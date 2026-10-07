@@ -15,10 +15,9 @@
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="img/icon-192.png">
 <link rel="preload" href="fonts/Nunito-Bold.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="stylesheet" href="styles.css?v=5">
+<link rel="stylesheet" href="styles.css?v=8">
 <script src="site.js?v=3" defer></script>
-<script src="spesa.js?v=1" defer></script>
-<script src="temi.js?v=1" defer></script>
+<script src="temi.js?v=2" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Vai al contenuto</a>
@@ -219,24 +218,30 @@
           <li>Vanno nel messaggio solo le cose che <b>mancano ancora</b>: quelle già nel carrello restano fuori.</li>
           <li>Nessun account e nessun server: il messaggio passa dal menù «Condividi» del telefono.</li>
         </ul>
-        <p class="note">Prova qui a fianco: tocca gli alimenti per metterli nel carrello e guarda il messaggio cambiare.</p>
       </div>
       <div class="reveal zoom" style="--d:.1s">
-        <div class="sharedemo" id="sd" aria-label="Prova: manda la lista della spesa">
-          <div class="sd-list" role="group" aria-label="Lista della spesa di prova"></div>
+        <div class="sharedemo" aria-label="Com'è il messaggio della spesa">
           <div class="sd-sheet">
             <div class="sd-title">Manda la lista</div>
-            <div class="sd-choices" role="radiogroup" aria-label="Cosa mandare">
-              <button type="button" class="sd-choice" role="radio" data-mode="urgent"><b>Solo urgenti</b><small></small></button>
-              <button type="button" class="sd-choice on" role="radio" data-mode="all" aria-checked="true"><b>Tutta la lista</b><small></small></button>
+            <div class="sd-choices">
+              <div class="sd-choice"><b>Solo urgenti</b><small>3 cose</small></div>
+              <div class="sd-choice on"><b>Tutta la lista</b><small>6 cose</small></div>
             </div>
             <div class="sd-cap">Anteprima</div>
-            <div class="sd-chat"><div class="sd-bubble" aria-live="polite"></div><div class="sd-sent" aria-hidden="true">Inviato ✓✓</div></div>
-            <div class="sd-actions">
-              <button type="button" class="sd-copy">Copia</button>
-              <button type="button" class="sd-send">Invia</button>
-            </div>
-            <p class="sd-toast" role="status"></p>
+            <div class="sd-chat"><div class="sd-bubble"><b>🛒 Lista della spesa</b>
+Mercoledì 7 ottobre · 6 cose da prendere
+
+⏰ <b>URGENTI</b> · per oggi e domani
+• Yogurt greco — 2 pz
+• Petto di pollo — 300 g
+• Insalata — 1 pz
+
+🥦 <b>Frutta e verdura</b>
+• Zucchine — 500 g
+• Mele — 4 pz
+
+<i>Fatta con Il mio menù</i></div></div>
+            <div class="sd-actions"><span class="sd-copy">Copia</span><span class="sd-send">Invia</span></div>
           </div>
         </div>
       </div>
@@ -334,7 +339,6 @@
           <div class="m-done" id="m-done" hidden><div class="m-mascot"><img alt="" id="m-mascot-img" width="64" height="64"><img alt="" id="m-mascot-badge" class="m-badge" width="28" height="28"></div><div><b>Hai preso tutto!</b><span>Nel carrello c'è tutta la spesa.</span></div></div>
           <div class="m-sec">Medaglie</div>
           <div class="m-medals" id="m-medals"></div>
-          <div class="m-nav"><span>Piano</span><span>Dispensa</span><span class="on">Lista</span><span>Attività</span></div>
           <div class="m-fx" id="m-fx" aria-hidden="true"></div>
         </div></div></div>
       </div>
@@ -344,20 +348,33 @@
         <h3 class="reveal">Temi speciali</h3>
         <div class="chips reveal" id="chips-special" role="radiogroup" aria-label="Temi speciali"></div>
         <div class="tinfo reveal" id="tinfo" aria-live="polite"></div>
-        <h3 class="reveal">Stile delle icone</h3>
-        <p class="small-dark reveal">Gli alimenti hanno una loro icona e puoi sceglierne lo stile, indipendentemente dal tema. Nuovi: Adesivo, Pastello, Acquerello, Punto croce e Lucciola.</p>
-        <div class="chips reveal" id="chips-icons" role="radiogroup" aria-label="Stile delle icone"></div>
         <p class="hint reveal"><b>Prova:</b> tocca gli alimenti per metterli nel carrello, poi «Segna come mangiato». Ogni tema festeggia a modo suo.</p>
       </div>
     </div>
 
-    <h3 class="gallery-h reveal">I primi cinque temi speciali, dal vivo</h3>
-    <div class="phones three five gallery">
-      <div class="phone reveal from-left"><img src="img/fumetto.webp" alt="Tema Fumetto" width="540" height="1169" loading="lazy"></div>
-      <div class="phone reveal" style="--d:.1s"><img src="img/quaderno.webp" alt="Tema Quaderno" width="540" height="1169" loading="lazy"></div>
-      <div class="phone reveal from-right" style="--d:.2s"><img src="img/salagiochi.webp" alt="Tema Sala giochi" width="540" height="1169" loading="lazy"></div>
-      <div class="phone reveal from-left" style="--d:.1s"><img src="img/neon.webp" alt="Tema Neon" width="540" height="1169" loading="lazy"></div>
-      <div class="phone reveal from-right" style="--d:.2s"><img src="img/progetto.webp" alt="Tema Progetto" width="540" height="1169" loading="lazy"></div>
+    <h3 class="gallery-h reveal">Gli stili delle icone</h3>
+    <p class="lead center-lead reveal">Ogni alimento ha la sua icona e puoi sceglierne lo stile in Impostazioni, anche diverso dal tema. Undici stili, cinque nuovi.</p>
+    <div class="istyles">
+      <div class="istyle reveal"><div class="istyle-h"><b>3D</b></div><div class="istyle-i"><img src="img/icons/3d-avocado.webp" alt="" loading="lazy" width="64" height="64"><img src="img/icons/3d-salmon.webp" alt="" loading="lazy" width="64" height="64"><img src="img/icons/3d-strawberry.webp" alt="" loading="lazy" width="64" height="64"><img src="img/icons/3d-croissant.webp" alt="" loading="lazy" width="64" height="64"></div></div>
+      <div class="istyle reveal"><div class="istyle-h"><b>Fumetto</b></div><div class="istyle-i"><img src="img/icons/fumetto-avocado.webp" alt="" loading="lazy" width="64" height="64"><img src="img/icons/fumetto-salmon.webp" alt="" loading="lazy" width="64" height="64"><img src="img/icons/fumetto-strawberry.webp" alt="" loading="lazy" width="64" height="64"><img src="img/icons/fumetto-croissant.webp" alt="" loading="lazy" width="64" height="64"></div></div>
+      <div class="istyle reveal"><div class="istyle-h"><b>Quaderno</b></div><div class="istyle-i"><img src="img/icons/quaderno-avocado.webp" alt="" loading="lazy" width="64" height="64"><img src="img/icons/quaderno-salmon.webp" alt="" loading="lazy" width="64" height="64"><img src="img/icons/quaderno-strawberry.webp" alt="" loading="lazy" width="64" height="64"><img src="img/icons/quaderno-croissant.webp" alt="" loading="lazy" width="64" height="64"></div></div>
+      <div class="istyle reveal"><div class="istyle-h"><b>Pixel</b></div><div class="istyle-i"><img src="img/icons/pixel-avocado.webp" alt="" loading="lazy" width="64" height="64"><img src="img/icons/pixel-salmon.webp" alt="" loading="lazy" width="64" height="64"><img src="img/icons/pixel-strawberry.webp" alt="" loading="lazy" width="64" height="64"><img src="img/icons/pixel-croissant.webp" alt="" loading="lazy" width="64" height="64"></div></div>
+      <div class="istyle ic-neon reveal"><div class="istyle-h"><b>Neon</b></div><div class="istyle-i"><img src="img/icons/neon-avocado.webp" alt="" loading="lazy" width="64" height="64"><img src="img/icons/neon-salmon.webp" alt="" loading="lazy" width="64" height="64"><img src="img/icons/neon-strawberry.webp" alt="" loading="lazy" width="64" height="64"><img src="img/icons/neon-croissant.webp" alt="" loading="lazy" width="64" height="64"></div></div>
+      <div class="istyle ic-progetto reveal"><div class="istyle-h"><b>Progetto</b></div><div class="istyle-i"><img src="img/icons/progetto-avocado.webp" alt="" loading="lazy" width="64" height="64"><img src="img/icons/progetto-salmon.webp" alt="" loading="lazy" width="64" height="64"><img src="img/icons/progetto-strawberry.webp" alt="" loading="lazy" width="64" height="64"><img src="img/icons/progetto-croissant.webp" alt="" loading="lazy" width="64" height="64"></div></div>
+      <div class="istyle reveal"><div class="istyle-h"><b>Adesivo</b><em>nuovo</em></div><div class="istyle-i"><img src="img/icons/adesivo-avocado.webp" alt="" loading="lazy" width="64" height="64"><img src="img/icons/adesivo-salmon.webp" alt="" loading="lazy" width="64" height="64"><img src="img/icons/adesivo-strawberry.webp" alt="" loading="lazy" width="64" height="64"><img src="img/icons/adesivo-croissant.webp" alt="" loading="lazy" width="64" height="64"></div></div>
+      <div class="istyle reveal"><div class="istyle-h"><b>Pastello</b><em>nuovo</em></div><div class="istyle-i"><img src="img/icons/pastello-avocado.webp" alt="" loading="lazy" width="64" height="64"><img src="img/icons/pastello-salmon.webp" alt="" loading="lazy" width="64" height="64"><img src="img/icons/pastello-strawberry.webp" alt="" loading="lazy" width="64" height="64"><img src="img/icons/pastello-croissant.webp" alt="" loading="lazy" width="64" height="64"></div></div>
+      <div class="istyle reveal"><div class="istyle-h"><b>Acquerello</b><em>nuovo</em></div><div class="istyle-i"><img src="img/icons/acquerello-avocado.webp" alt="" loading="lazy" width="64" height="64"><img src="img/icons/acquerello-salmon.webp" alt="" loading="lazy" width="64" height="64"><img src="img/icons/acquerello-strawberry.webp" alt="" loading="lazy" width="64" height="64"><img src="img/icons/acquerello-croissant.webp" alt="" loading="lazy" width="64" height="64"></div></div>
+      <div class="istyle reveal"><div class="istyle-h"><b>Punto croce</b><em>nuovo</em></div><div class="istyle-i"><img src="img/icons/puntocroce-avocado.webp" alt="" loading="lazy" width="64" height="64"><img src="img/icons/puntocroce-salmon.webp" alt="" loading="lazy" width="64" height="64"><img src="img/icons/puntocroce-strawberry.webp" alt="" loading="lazy" width="64" height="64"><img src="img/icons/puntocroce-croissant.webp" alt="" loading="lazy" width="64" height="64"></div></div>
+      <div class="istyle reveal"><div class="istyle-h"><b>Lucciola</b><em>nuovo</em></div><div class="istyle-i"><img src="img/icons/lucciola-avocado.webp" alt="" loading="lazy" width="64" height="64"><img src="img/icons/lucciola-salmon.webp" alt="" loading="lazy" width="64" height="64"><img src="img/icons/lucciola-strawberry.webp" alt="" loading="lazy" width="64" height="64"><img src="img/icons/lucciola-croissant.webp" alt="" loading="lazy" width="64" height="64"></div></div>
+    </div>
+
+    <h3 class="gallery-h reveal">Cinque temi speciali, dal vivo nell'app</h3>
+    <div class="gallery">
+      <figure class="reveal" style="--d:0.00s"><div class="phone"><img src="img/fumetto.webp" alt="Tema Fumetto" width="540" height="1169" loading="lazy"></div><figcaption>Fumetto</figcaption></figure>
+      <figure class="reveal" style="--d:0.08s"><div class="phone"><img src="img/quaderno.webp" alt="Tema Quaderno" width="540" height="1169" loading="lazy"></div><figcaption>Quaderno</figcaption></figure>
+      <figure class="reveal" style="--d:0.16s"><div class="phone"><img src="img/salagiochi.webp" alt="Tema Sala giochi" width="540" height="1169" loading="lazy"></div><figcaption>Sala giochi</figcaption></figure>
+      <figure class="reveal" style="--d:0.24s"><div class="phone"><img src="img/neon.webp" alt="Tema Neon" width="540" height="1169" loading="lazy"></div><figcaption>Neon</figcaption></figure>
+      <figure class="reveal" style="--d:0.32s"><div class="phone"><img src="img/progetto.webp" alt="Tema Progetto" width="540" height="1169" loading="lazy"></div><figcaption>Progetto</figcaption></figure>
     </div>
   </div>
 </section>
