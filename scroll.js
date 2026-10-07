@@ -3,13 +3,9 @@
   var root = document.documentElement;
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return; // restano la griglia e la galleria statiche
   root.classList.add("pinon");
-  // Sul telefono (dito, niente mouse) le sezioni non si fermano: si sfogliano con un gesto laterale o toccando i nomi.
-  var swipe = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
-  if (swipe) root.classList.add("swipe");
   var clamp = function (v) { return Math.max(0, Math.min(1, v)); };
   // Porta la pagina al punto in cui la sezione ferma mostra l'elemento i di n (inverso di progress).
   function goTo(el, i, n) {
-    if (swipe) { el._set(i); return; }
     var r = el.getBoundingClientRect(), span = r.height - window.innerHeight;
     window.scrollTo({ top: window.scrollY + r.top + (0.06 + 0.88 * i / (n - 1)) * span + 1, behavior: "smooth" });
   }
@@ -18,18 +14,6 @@
     d.type = "button"; d.textContent = label;
     d.addEventListener("click", function () { goTo(el, i, n); });
     parent.appendChild(d);
-  }
-  // Gesto laterale sul telefono: un passo avanti o indietro.
-  function gestures(target, el) {
-    if (!swipe) return;
-    var x0 = null, y0 = 0;
-    target.addEventListener("touchstart", function (e) { x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; }, { passive: true });
-    target.addEventListener("touchend", function (e) {
-      if (x0 === null) return;
-      var dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0;
-      x0 = null;
-      if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy) * 1.2) el._set(el._cur() + (dx < 0 ? 1 : -1));
-    }, { passive: true });
   }
   function progress(el) { var r = el.getBoundingClientRect(); return clamp((-r.top / (r.height - window.innerHeight) - 0.06) / 0.88); }
 
@@ -54,8 +38,8 @@
       dot(dots, s[1], pi, i, STY.length);
     });
     var dotEls = dots.children, lastI = -1;
-    function drawIcons(pos) {
-      var idx = Math.round(pos);
+    function drawIcons() {
+      var pos = progress(pi) * (STY.length - 1), idx = Math.round(pos);
       for (var i = 0; i < STY.length; i++) {
         var o = Math.max(0, 1 - Math.abs(i - pos) * 1.6);
         for (var k = 0; k < layers[i].length; k++) {
@@ -70,11 +54,7 @@
         for (var j = 0; j < dotEls.length; j++) dotEls[j].classList.toggle("on", j === idx);
       }
     }
-    var curI = 0;
-    pi._draw = function () { drawIcons(progress(pi) * (STY.length - 1)); };
-    pi._set = function (i) { curI = Math.max(0, Math.min(STY.length - 1, i)); drawIcons(curI); };
-    pi._n = STY.length; pi._cur = function () { return curI; };
-    gestures(tile, pi);
+    pi._draw = drawIcons;
   }
 
   // ---------- cinque temi speciali, dal vivo ----------
@@ -95,8 +75,8 @@
     });
     var ddEls = dd.children, lastT = -1;
     function light(hex) { var n = parseInt(hex.slice(1), 16); return (((n >> 16) * 299 + ((n >> 8) & 255) * 587 + (n & 255) * 114) / 1000) > 140; }
-    function drawThemes(pos) {
-      var idx = Math.round(pos), w = deck.clientWidth;
+    function drawThemes() {
+      var pos = progress(pt) * (TH.length - 1), idx = Math.round(pos), w = deck.clientWidth;
       figs.forEach(function (f, i) {
         var d = i - pos, a = Math.abs(d), step = Math.min(w * 0.46, 250);
         f.style.transform = "translateX(" + (d * step).toFixed(1) + "px) scale(" + (1 - Math.min(a, 2) * 0.17).toFixed(3) + ") rotate(" + (d * 5).toFixed(2) + "deg)";
@@ -111,11 +91,7 @@
         for (var j = 0; j < ddEls.length; j++) ddEls[j].classList.toggle("on", j === idx);
       }
     }
-    var curT = 0;
-    pt._draw = function () { drawThemes(progress(pt) * (TH.length - 1)); };
-    pt._set = function (i) { curT = Math.max(0, Math.min(TH.length - 1, i)); drawThemes(curT); };
-    pt._n = TH.length; pt._cur = function () { return curT; };
-    gestures(deck, pt);
+    pt._draw = drawThemes;
   }
 
   // ---------- parallasse leggera dei telefoni nelle funzioni ----------
@@ -134,7 +110,7 @@
     ticking = false;
     var h = window.innerHeight;
     [pi, pt].forEach(function (el) {
-      if (!el || swipe) return;
+      if (!el) return;
       var r = el.getBoundingClientRect();
       if (r.bottom > -h && r.top < h * 2) el._draw();
     });
@@ -142,9 +118,5 @@
   }
   window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }, { passive: true });
   window.addEventListener("resize", frame);
-  if (swipe) {
-    [pi, pt].forEach(function (el) { if (el) el._set(0); });
-    document.querySelectorAll(".swipe .pin-hint").forEach(function (h) { h.textContent = "Scorri di lato o tocca un nome"; });
-  }
   frame();
 })();

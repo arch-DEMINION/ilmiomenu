@@ -1,5 +1,5 @@
-// Il mio menù — funzioni: la pagina fa scorrere le schede di lato e ognuna si apre da sola al centro dello schermo.
-// Si può anche usare il cursore, le frecce o toccare una scheda. Più le tendine per le schede dei professionisti.
+// Il mio menù — funzioni: scorrendo la pagina in verticale le schede scorrono di lato (sezione ferma).
+// Ogni scheda è già aperta; «Approfondisci» fa salire dentro la scheda tutti i dettagli. Più le tendine dei professionisti.
 (function () {
   document.querySelectorAll(".acc-card .acc-h").forEach(function (h) {
     h.addEventListener("click", function () {
@@ -11,122 +11,95 @@
 
   var pin = document.getElementById("hpin"), strip = document.getElementById("fstrip");
   if (!pin || !strip) return;
-  var root = document.documentElement, stage = pin.querySelector(".hpin-stage"), view = pin.querySelector(".hp-view");
-  var still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  // Con il mouse la pagina guida le schede; sul telefono (o con «riduci movimento») la striscia si sfoglia col dito,
-  // una scheda alla volta, e la pagina scorre normalmente.
-  var touch = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
-  var pinned = !still && !touch;
+  var root = document.documentElement, view = pin.querySelector(".hp-view");
+  var pinned = !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (pinned) root.classList.add("hp-on");
-  var cards = Array.prototype.slice.call(strip.querySelectorAll(".fcard"));
-  var N = cards.length, cur = -1;
+  var cards = Array.prototype.slice.call(strip.querySelectorAll(".fcard")), N = cards.length;
   var range = document.getElementById("hp-range"), lab = document.getElementById("hp-n"), labT = document.getElementById("hp-t");
   var prevB = document.querySelector(".hp-prev"), nextB = document.querySelector(".hp-next");
-  var GAP = 18, STEP_MIN = 300, syncing = false, settle;
-  range.max = N - 1;
+  var dist = 0, cur = -1;
+  // Quanti px di pagina per ogni px laterale: meno di 1, così la sezione non diventa lunghissima.
+  function K() { return window.innerWidth < 760 ? 0.6 : 0.5; }
+  range.min = 0; range.max = 1000; range.step = 1;
 
+  // ---------- «Approfondisci» ----------
+  function setMore(li, open) {
+    var panel = li.querySelector(".fc-panel"), btn = li.querySelector(".fc-more");
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+    if (open) { panel.hidden = false; void panel.offsetWidth; li.classList.add("more"); panel.querySelector(".fc-close").focus({ preventScroll: true }); }
+    else {
+      li.classList.remove("more");
+      setTimeout(function () { if (!li.classList.contains("more")) panel.hidden = true; }, 460);
+      btn.focus({ preventScroll: true });
+    }
+  }
+  cards.forEach(function (li) {
+    li.querySelector(".fc-more").addEventListener("click", function () { setMore(li, true); });
+    li.querySelector(".fc-close").addEventListener("click", function () { setMore(li, false); });
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key !== "Escape") return;
+    cards.forEach(function (li) { if (li.classList.contains("more")) setMore(li, false); });
+  });
+
+  // ---------- scorrimento laterale guidato dalla pagina ----------
   function pinTop() { return pin.getBoundingClientRect().top + window.scrollY; }
-  function step() { return Math.max(STEP_MIN, window.innerHeight * 0.42); }
+  function shift() { return pinned ? Math.max(0, Math.min(dist, -pin.getBoundingClientRect().top / K())) : view.scrollLeft; }
   function layout() {
-    var ow = Math.min(1000, window.innerWidth - 36);
-    stage.style.setProperty("--ow", ow + "px");
-    if (pinned) pin.style.height = Math.round(window.innerHeight + (N - 1) * step()) + "px";
-    center(false);
+    dist = Math.max(0, strip.scrollWidth - view.clientWidth);
+    if (pinned) pin.style.height = Math.round(window.innerHeight + dist * K()) + "px";
+    draw();
   }
-
-  // Sposta la striscia in modo che la scheda aperta stia al centro della vista.
-  function center(smooth) {
-    if (cur < 0) return;
-    if (!pinned) {
-      var li = cards[cur], left = li.offsetLeft - (view.clientWidth - li.offsetWidth) / 2;
-      if (Math.abs(view.scrollLeft - left) > 2) { syncing = true; view.scrollTo({ left: left, behavior: smooth === false ? "auto" : "smooth" }); }
-      return;
+  function draw() {
+    var x = shift();
+    if (pinned) strip.style.transform = "translate3d(" + (-x).toFixed(1) + "px,0,0)";
+    var p = dist ? x / dist : 0;
+    range.value = Math.round(p * 1000);
+    range.style.setProperty("--pct", (p * 100).toFixed(2) + "%");
+    // scheda più vicina al centro: etichetta e frecce
+    var mid = x + view.clientWidth / 2, best = 0, bd = Infinity;
+    cards.forEach(function (c, k) { var d = Math.abs(c.offsetLeft + c.offsetWidth / 2 - mid); if (d < bd) { bd = d; best = k; } });
+    if (best !== cur) {
+      cur = best;
+      lab.textContent = (cur + 1) + " / " + N;
+      labT.textContent = cards[cur].querySelector(".fc-t b").textContent;
     }
-    var cw = Math.min(290, window.innerWidth * 0.78), ow = Math.min(1000, window.innerWidth - 36); // come in CSS: min(78vw, 290px) e --ow
-    var x = cur * (cw + GAP) + ow / 2;
-    strip.style.transform = "translate3d(" + Math.round(view.clientWidth / 2 - x) + "px,0,0)";
+    prevB.disabled = x <= 2; nextB.disabled = x >= dist - 2;
+  }
+  // Spostamento laterale x (in px) che porta la scheda i al centro.
+  function xOf(i) { var c = cards[i]; return Math.max(0, Math.min(dist, c.offsetLeft + c.offsetWidth / 2 - view.clientWidth / 2)); }
+  function goX(x, instant) {
+    if (pinned) window.scrollTo({ top: pinTop() + x * K() + 1, behavior: instant ? "auto" : "smooth" });
+    else view.scrollTo({ left: x, behavior: instant ? "auto" : "smooth" });
   }
 
-  function fill(li) {
-    var d = li.querySelector(".fc-detail");
-    d.textContent = "";
-    d.appendChild(li.querySelector("template").content.cloneNode(true));
-  }
-  function setIndex(i, fromSwipe) {
-    i = Math.max(0, Math.min(N - 1, i));
-    if (i === cur) return;
-    var old = cards[cur];
-    if (old) {
-      old.classList.remove("open");
-      old.querySelector(".fc-btn").setAttribute("aria-expanded", "false");
-      setTimeout(function () { if (!old.classList.contains("open")) old.querySelector(".fc-detail").textContent = ""; }, 520);
-    }
-    cur = i;
-    var li = cards[i];
-    li.classList.add("open");
-    li.querySelector(".fc-btn").setAttribute("aria-expanded", "true");
-    fill(li);
-    if (!fromSwipe) center();
-    range.value = i;
-    range.style.setProperty("--pct", (N > 1 ? i / (N - 1) * 100 : 0) + "%");
-    lab.textContent = (i + 1) + " / " + N;
-    labT.textContent = li.querySelector(".fc-t b").textContent;
-    prevB.disabled = i === 0; nextB.disabled = i === N - 1;
-  }
-
-  // Scorrimento della pagina -> scheda attiva.
   var tick = false;
-  function fromScroll() {
-    tick = false;
-    if (!pinned) return;
-    var r = pin.getBoundingClientRect(), span = r.height - window.innerHeight;
-    if (r.top > window.innerHeight || r.bottom < 0) return;
-    var p = Math.max(0, Math.min(1, -r.top / span));
-    setIndex(Math.round(p * (N - 1)));
-  }
-  window.addEventListener("scroll", function () { if (!tick) { tick = true; requestAnimationFrame(fromScroll); } }, { passive: true });
-  window.addEventListener("resize", function () { layout(); fromScroll(); });
+  function onScroll() { if (!tick) { tick = true; requestAnimationFrame(function () { tick = false; draw(); }); } }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  view.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", layout);
+  if ("ResizeObserver" in window) new ResizeObserver(layout).observe(strip);
 
-  if (!pinned) view.addEventListener("scroll", function () {
-    clearTimeout(settle);
-    settle = setTimeout(function () {
-      if (syncing) { syncing = false; return; }
-      var mid = view.scrollLeft + view.clientWidth / 2, best = 0, bd = Infinity;
-      cards.forEach(function (c, k) { var d = Math.abs(c.offsetLeft + c.offsetWidth / 2 - mid); if (d < bd) { bd = d; best = k; } });
-      setIndex(best, true);
-    }, 90);
-  }, { passive: true });
-
-  // Cursore, frecce e tocco: in modalità «pagina guida» spostano la pagina, altrimenti cambiano scheda direttamente.
-  function goTo(i, instant) {
-    i = Math.max(0, Math.min(N - 1, i));
-    if (pinned) {
-      var span = pin.offsetHeight - window.innerHeight;
-      var inView = pin.getBoundingClientRect().top <= 0 && pin.getBoundingClientRect().bottom >= window.innerHeight;
-      window.scrollTo({ top: pinTop() + span * (i / (N - 1)) + 1, behavior: instant || !inView ? "auto" : "smooth" });
-      if (!inView) setIndex(i);
-    } else setIndex(i);
-  }
-  range.addEventListener("input", function () { goTo(+range.value, true); });
-  prevB.addEventListener("click", function () { goTo(cur - 1); });
-  nextB.addEventListener("click", function () { goTo(cur + 1); });
-  cards.forEach(function (li, i) { li.querySelector(".fc-btn").addEventListener("click", function () { if (i !== cur) goTo(i); }); });
-  stage.addEventListener("keydown", function (e) {
-    if (e.target === range) return; // il cursore usa già le sue frecce
-    if (e.key === "ArrowLeft") { goTo(cur - 1); e.preventDefault(); }
-    else if (e.key === "ArrowRight") { goTo(cur + 1); e.preventDefault(); }
+  range.addEventListener("input", function () { goX(+range.value / 1000 * dist, true); });
+  // Le frecce portano alla scheda precedente o successiva rispetto a quella al centro.
+  prevB.addEventListener("click", function () {
+    var x = shift(), i = cur;
+    while (i > 0 && xOf(i) >= x - 4) i--;
+    goX(xOf(i));
+  });
+  nextB.addEventListener("click", function () {
+    var x = shift(), i = cur;
+    while (i < N - 1 && xOf(i) <= x + 4) i++;
+    goX(xOf(i));
   });
 
   layout();
-  setIndex(0);
-  if (!pinned) center(false);
   // Un link come #manda porta direttamente a quella scheda.
   function fromHash() {
     var id = location.hash.slice(1), i = cards.findIndex(function (c) { return c.id === id; });
     if (i < 0) return;
-    if (pinned) { window.scrollTo(0, pinTop()); setIndex(i); setTimeout(function () { goTo(i, true); }, 50); } else { document.getElementById("funzioni").scrollIntoView(); setIndex(i); center(false); }
+    if (pinned) { layout(); window.scrollTo(0, pinTop() + xOf(i) * K() + 1); } else { document.getElementById("funzioni").scrollIntoView(); goX(xOf(i), true); }
   }
   window.addEventListener("hashchange", fromHash);
   fromHash();
-  fromScroll();
 })();

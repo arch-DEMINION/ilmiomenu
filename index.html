@@ -15,11 +15,11 @@
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="img/icon-192.png">
 <link rel="preload" href="fonts/Nunito-Bold.ttf" as="font" type="font/ttf" crossorigin>
-<link rel="stylesheet" href="styles.css?v=26">
+<link rel="stylesheet" href="styles.css?v=28">
 <script src="site.js?v=3" defer></script>
 <script src="temi.js?v=3" defer></script>
-<script src="scroll.js?v=5" defer></script>
-<script src="tendine.js?v=5" defer></script>
+<script src="scroll.js?v=6" defer></script>
+<script src="tendine.js?v=6" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Vai al contenuto</a>
@@ -109,80 +109,72 @@
       <div class="hp-view">
         <ul class="fstrip" id="fstrip">
         <li class="fcard v0" id="f1">
-          <button type="button" class="fc-btn" aria-expanded="false" aria-controls="fd1">
-            <span class="fc-head"><span class="fc-n">01</span><span class="fc-t"><b>Arriva la dieta</b><small>Tre strade per riempire l'app</small></span><span class="fc-go" aria-hidden="true"><i></i></span></span>
-            <span class="fc-img"><img class="fc-p1" src="img/primo-avvio.webp" alt="" width="540" height="1169" loading="lazy"><img class="fc-p2" src="img/qr.webp" alt="" width="540" height="1169" loading="lazy"></span>
-          </button>
-          <div class="fc-detail" id="fd1" role="region" aria-label="Arriva la dieta"></div>
-          <template><div class="feature">
-      <div class="text">
-        <p>Al primo avvio l'app è vuota: nessuna dieta preinstallata. Scegli tu come riempirla.</p>
+          <article class="fc" aria-labelledby="ft1">
+            <header class="fc-head"><span class="fc-n">01</span><span class="fc-t"><b id="ft1">Arriva la dieta</b><small>Tre strade per riempire l'app</small></span></header>
+            <div class="fc-body">
+              <div class="fc-text"><p class="fc-lead">Al primo avvio l'app è vuota: nessuna dieta preinstallata. Scegli tu come riempirla.</p><button type="button" class="fc-more" aria-expanded="false" aria-controls="fm1">Approfondisci<i aria-hidden="true"></i></button></div>
+              <div class="fc-img"><img class="fc-p1" src="img/primo-avvio.webp" alt="" width="540" height="1169" loading="lazy"><img class="fc-p2" src="img/qr.webp" alt="" width="540" height="1169" loading="lazy"></div>
+            </div>
+            <div class="fc-panel" id="fm1" role="region" aria-label="Arriva la dieta: tutti i dettagli" hidden>
+              <div class="fc-panel-top"><b>Arriva la dieta</b><button type="button" class="fc-close" aria-label="Chiudi i dettagli"></button></div>
+              <div class="fc-panel-in"><p>Al primo avvio l'app è vuota: nessuna dieta preinstallata. Scegli tu come riempirla.</p>
         <ul>
           <li><b>A mano</b>, copiando il foglio del nutrizionista: alimenti, grammature, nomi dei piatti.</li>
           <li><b>Con i QR o con il PDF</b> ricevuto: si inquadrano i codici in qualsiasi ordine, oppure si apre il PDF e non serve la fotocamera.</li>
           <li>La dieta importata si apre come bozza e diventa attiva solo dopo la conferma.</li>
         </ul>
-        <p class="note"><b>Per il professionista</b> Chi prepara le diete può usare il costruttore della dieta, un file HTML che si apre nel browser anche senza internet: si compone il piano e si scarica il PDF con i QR. Nessun dato viene inviato a nessuno.</p>
-      </div>
-      <div class="phones">
-        <div class="phone"><img src="img/primo-avvio.webp" alt="Primo avvio: inserisci la tua dieta" width="540" height="1169" loading="lazy"></div>
-        <div class="phone"><img src="img/qr.webp" alt="Condividi la dieta con un codice QR" width="540" height="1169" loading="lazy"></div>
-      </div>
-      </div></template>
+        <p class="note"><b>Per il professionista</b> Chi prepara le diete può usare il costruttore della dieta, un file HTML che si apre nel browser anche senza internet: si compone il piano e si scarica il PDF con i QR. Nessun dato viene inviato a nessuno.</p></div>
+            </div>
+          </article>
         </li>
         <li class="fcard v1" id="f2">
-          <button type="button" class="fc-btn" aria-expanded="false" aria-controls="fd2">
-            <span class="fc-head"><span class="fc-n">02</span><span class="fc-t"><b>Modifica dieta</b><small>La dieta resta modificabile, con cautela</small></span><span class="fc-go" aria-hidden="true"><i></i></span></span>
-            <span class="fc-img"><img class="fc-p1" src="img/modifica-dieta.webp" alt="" width="540" height="1169" loading="lazy"><img class="fc-p2" src="img/consigli-dieta.webp" alt="" width="540" height="1169" loading="lazy"></span>
-          </button>
-          <div class="fc-detail" id="fd2" role="region" aria-label="Modifica dieta"></div>
-          <template><div class="feature flip">
-      <div class="text">
-        <p>Per ogni giorno: alimenti e quantità, nome del piatto, pasto libero. Un giorno si può copiare sugli altri.</p>
+          <article class="fc" aria-labelledby="ft2">
+            <header class="fc-head"><span class="fc-n">02</span><span class="fc-t"><b id="ft2">Modifica dieta</b><small>La dieta resta modificabile, con cautela</small></span></header>
+            <div class="fc-body">
+              <div class="fc-text"><p class="fc-lead">Per ogni giorno: alimenti e quantità, nome del piatto, pasto libero. Un giorno si può copiare sugli altri.</p><button type="button" class="fc-more" aria-expanded="false" aria-controls="fm2">Approfondisci<i aria-hidden="true"></i></button></div>
+              <div class="fc-img"><img class="fc-p1" src="img/modifica-dieta.webp" alt="" width="540" height="1169" loading="lazy"><img class="fc-p2" src="img/consigli-dieta.webp" alt="" width="540" height="1169" loading="lazy"></div>
+            </div>
+            <div class="fc-panel" id="fm2" role="region" aria-label="Modifica dieta: tutti i dettagli" hidden>
+              <div class="fc-panel-top"><b>Modifica dieta</b><button type="button" class="fc-close" aria-label="Chiudi i dettagli"></button></div>
+              <div class="fc-panel-in"><p>Per ogni giorno: alimenti e quantità, nome del piatto, pasto libero. Un giorno si può copiare sugli altri.</p>
         <ul>
           <li>Consigli della dieta: l'acqua della giornata, consigli prima dei pasti scelti, alimenti in evidenza (per esempio l'olio).</li>
           <li>Ogni modifica chiede «Sei sicuro?» e da quando vale: da subito o dal lunedì successivo.</li>
           <li>Le diete si salvano con un nome; la dieta ricevuta si può sempre ripristinare.</li>
         </ul>
-        <p class="note"><b>Per il professionista</b> Consigli e promemoria viaggiano nei QR insieme alla dieta e arrivano al paziente come li ha scritti.</p>
-      </div>
-      <div class="phones">
-        <div class="phone"><img src="img/modifica-dieta.webp" alt="Modifica dieta: alimenti e grammature di un pasto" width="540" height="1169" loading="lazy"></div>
-        <div class="phone"><img src="img/consigli-dieta.webp" alt="Consigli della dieta e alimenti in evidenza" width="540" height="1169" loading="lazy"></div>
-      </div>
-      </div></template>
+        <p class="note"><b>Per il professionista</b> Consigli e promemoria viaggiano nei QR insieme alla dieta e arrivano al paziente come li ha scritti.</p></div>
+            </div>
+          </article>
         </li>
         <li class="fcard v2" id="f3">
-          <button type="button" class="fc-btn" aria-expanded="false" aria-controls="fd3">
-            <span class="fc-head"><span class="fc-n">03</span><span class="fc-t"><b>Il piano del giorno</b><small>Cosa mangiare adesso, senza cercare il foglio</small></span><span class="fc-go" aria-hidden="true"><i></i></span></span>
-            <span class="fc-img"><img class="fc-p1" src="img/piano.webp" alt="" width="540" height="1169" loading="lazy"><img class="fc-p2" src="img/prossimo-pasto.webp" alt="" width="540" height="1169" loading="lazy"></span>
-          </button>
-          <div class="fc-detail" id="fd3" role="region" aria-label="Il piano del giorno"></div>
-          <template><div class="feature">
-      <div class="text">
-        <p>All'apertura i pasti di oggi con alimenti e grammature, il prossimo pasto in evidenza. Con uno scorrimento laterale si passa al giorno dopo.</p>
+          <article class="fc" aria-labelledby="ft3">
+            <header class="fc-head"><span class="fc-n">03</span><span class="fc-t"><b id="ft3">Il piano del giorno</b><small>Cosa mangiare adesso, senza cercare il foglio</small></span></header>
+            <div class="fc-body">
+              <div class="fc-text"><p class="fc-lead">All'apertura i pasti di oggi con alimenti e grammature, il prossimo pasto in evidenza. Con uno scorrimento laterale si passa al giorno dopo.</p><button type="button" class="fc-more" aria-expanded="false" aria-controls="fm3">Approfondisci<i aria-hidden="true"></i></button></div>
+              <div class="fc-img"><img class="fc-p1" src="img/piano.webp" alt="" width="540" height="1169" loading="lazy"><img class="fc-p2" src="img/prossimo-pasto.webp" alt="" width="540" height="1169" loading="lazy"></div>
+            </div>
+            <div class="fc-panel" id="fm3" role="region" aria-label="Il piano del giorno: tutti i dettagli" hidden>
+              <div class="fc-panel-top"><b>Il piano del giorno</b><button type="button" class="fc-close" aria-label="Chiudi i dettagli"></button></div>
+              <div class="fc-panel-in"><p>All'apertura i pasti di oggi con alimenti e grammature, il prossimo pasto in evidenza. Con uno scorrimento laterale si passa al giorno dopo.</p>
         <ul>
           <li><b>Segna come mangiato</b>: il pasto si sbiadisce e gli alimenti escono dalla dispensa. La spunta automatica lo fa all'orario del pasto.</li>
           <li>I consigli compaiono al momento giusto: l'acqua in cima, un consiglio prima di pranzo e cena, l'olio nel riquadro dorato.</li>
           <li><b>Promemoria di preparazione</b>: «metti a cuocere il farro» 40 minuti prima, o la sera prima.</li>
           <li>Si sfogliano anche le settimane passate, ognuna con la dieta com'era allora.</li>
-        </ul>
-      </div>
-      <div class="phones">
-        <div class="phone"><img src="img/piano.webp" alt="Il piano del giorno" width="540" height="1169" loading="lazy"></div>
-        <div class="phone"><img src="img/prossimo-pasto.webp" alt="Il prossimo pasto in evidenza con l'olio nel riquadro dorato" width="540" height="1169" loading="lazy"></div>
-      </div>
-      </div></template>
+        </ul></div>
+            </div>
+          </article>
         </li>
         <li class="fcard v3" id="f4">
-          <button type="button" class="fc-btn" aria-expanded="false" aria-controls="fd4">
-            <span class="fc-head"><span class="fc-n">04</span><span class="fc-t"><b>Imprevisti</b><small>Flessibile, senza uscire dal piano</small></span><span class="fc-go" aria-hidden="true"><i></i></span></span>
-            <span class="fc-img"><img class="fc-p1" src="img/sostituzioni.webp" alt="" width="540" height="1169" loading="lazy"><img class="fc-p2" src="img/scambia.webp" alt="" width="540" height="1169" loading="lazy"></span>
-          </button>
-          <div class="fc-detail" id="fd4" role="region" aria-label="Imprevisti"></div>
-          <template><div class="feature flip">
-      <div class="text">
-        <p>La tabella sostituzioni raccoglie gruppi di alimenti equivalenti alle dosi scritte. Senza tabella, nel Piano non compare nessuna sostituzione.</p>
+          <article class="fc" aria-labelledby="ft4">
+            <header class="fc-head"><span class="fc-n">04</span><span class="fc-t"><b id="ft4">Imprevisti</b><small>Flessibile, senza uscire dal piano</small></span></header>
+            <div class="fc-body">
+              <div class="fc-text"><p class="fc-lead">La tabella sostituzioni raccoglie gruppi di alimenti equivalenti alle dosi scritte. Senza tabella, nel Piano non compare nessuna sostituzione.</p><button type="button" class="fc-more" aria-expanded="false" aria-controls="fm4">Approfondisci<i aria-hidden="true"></i></button></div>
+              <div class="fc-img"><img class="fc-p1" src="img/sostituzioni.webp" alt="" width="540" height="1169" loading="lazy"><img class="fc-p2" src="img/scambia.webp" alt="" width="540" height="1169" loading="lazy"></div>
+            </div>
+            <div class="fc-panel" id="fm4" role="region" aria-label="Imprevisti: tutti i dettagli" hidden>
+              <div class="fc-panel-top"><b>Imprevisti</b><button type="button" class="fc-close" aria-label="Chiudi i dettagli"></button></div>
+              <div class="fc-panel-in"><p>La tabella sostituzioni raccoglie gruppi di alimenti equivalenti alle dosi scritte. Senza tabella, nel Piano non compare nessuna sostituzione.</p>
         <ul>
           <li>Gli alimenti sostituibili hanno il simbolo ⇄: un tocco mostra gli equivalenti, con la grammatura ricalcolata in proporzione. Vale solo per quel pasto.</li>
           <li><b>Scambia giorno</b>: il menù di oggi si scambia con un altro giorno della settimana, sempre con Annulla.</li>
@@ -190,39 +182,34 @@
           <li><b>Scambi tra giorni</b>: alcuni gruppi (per esempio gelato e cioccolato) si spostano tra i giorni invece di sostituirsi.</li>
           <li>Tutto questo vale anche per la settimana prossima.</li>
         </ul>
-        <p class="note"><b>Per il professionista</b> Le dosi non cambiano mai fuori dalla tabella: il paziente sceglie solo tra ciò che ha indicato come equivalente.</p>
-      </div>
-      <div class="phones">
-        <div class="phone"><img src="img/sostituzioni.webp" alt="Sostituisci yogurt greco: kefir, yogurt bianco magro, skyr" width="540" height="1169" loading="lazy"></div>
-        <div class="phone"><img src="img/scambia.webp" alt="Scambia il menù di venerdì con un altro giorno" width="540" height="1169" loading="lazy"></div>
-      </div>
-      </div></template>
+        <p class="note"><b>Per il professionista</b> Le dosi non cambiano mai fuori dalla tabella: il paziente sceglie solo tra ciò che ha indicato come equivalente.</p></div>
+            </div>
+          </article>
         </li>
         <li class="fcard v4" id="f5">
-          <button type="button" class="fc-btn" aria-expanded="false" aria-controls="fd5">
-            <span class="fc-head"><span class="fc-n">05</span><span class="fc-t"><b>Note sui pasti</b><small>Un diario per la visita</small></span><span class="fc-go" aria-hidden="true"><i></i></span></span>
-            <span class="fc-img"><img class="fc-p1" src="img/postit.webp" alt="" width="540" height="1169" loading="lazy"></span>
-          </button>
-          <div class="fc-detail" id="fd5" role="region" aria-label="Note sui pasti"></div>
-          <template><div class="feature">
-      <div class="text">
-        <p>Su ogni pasto puoi attaccare un post-it: come ti sei sentito, una difficoltà, una domanda da fare. La nota vale per quel giorno oppure, con un interruttore, per ogni volta che quel pasto torna nella settimana.</p>
-        <p class="note"><b>Per il professionista</b> Alla visita il paziente arriva con esempi concreti, non solo ricordi. Le note restano sul suo telefono.</p>
-      </div>
-      <div class="phones">
-        <div class="phone"><img src="img/postit.webp" alt="Un post-it attaccato a un pasto" width="540" height="1169" loading="lazy"></div>
-      </div>
-      </div></template>
+          <article class="fc" aria-labelledby="ft5">
+            <header class="fc-head"><span class="fc-n">05</span><span class="fc-t"><b id="ft5">Note sui pasti</b><small>Un diario per la visita</small></span></header>
+            <div class="fc-body">
+              <div class="fc-text"><p class="fc-lead">Su ogni pasto puoi attaccare un post-it: come ti sei sentito, una difficoltà, una domanda da fare. La nota vale per quel giorno oppure, con un interruttore, per ogni volta che quel pasto torna nella settimana.</p><button type="button" class="fc-more" aria-expanded="false" aria-controls="fm5">Approfondisci<i aria-hidden="true"></i></button></div>
+              <div class="fc-img"><img class="fc-p1" src="img/postit.webp" alt="" width="540" height="1169" loading="lazy"></div>
+            </div>
+            <div class="fc-panel" id="fm5" role="region" aria-label="Note sui pasti: tutti i dettagli" hidden>
+              <div class="fc-panel-top"><b>Note sui pasti</b><button type="button" class="fc-close" aria-label="Chiudi i dettagli"></button></div>
+              <div class="fc-panel-in"><p>Su ogni pasto puoi attaccare un post-it: come ti sei sentito, una difficoltà, una domanda da fare. La nota vale per quel giorno oppure, con un interruttore, per ogni volta che quel pasto torna nella settimana.</p>
+        <p class="note"><b>Per il professionista</b> Alla visita il paziente arriva con esempi concreti, non solo ricordi. Le note restano sul suo telefono.</p></div>
+            </div>
+          </article>
         </li>
         <li class="fcard v5" id="f6">
-          <button type="button" class="fc-btn" aria-expanded="false" aria-controls="fd6">
-            <span class="fc-head"><span class="fc-n">06</span><span class="fc-t"><b>Dispensa e lista della spesa</b><small>In casa c'è ciò che serve</small></span><span class="fc-go" aria-hidden="true"><i></i></span></span>
-            <span class="fc-img"><img class="fc-p1" src="img/dispensa.webp" alt="" width="540" height="1169" loading="lazy"><img class="fc-p2" src="img/lista.webp" alt="" width="540" height="1169" loading="lazy"></span>
-          </button>
-          <div class="fc-detail" id="fd6" role="region" aria-label="Dispensa e lista della spesa"></div>
-          <template><div class="feature flip">
-      <div class="text">
-        <ul>
+          <article class="fc" aria-labelledby="ft6">
+            <header class="fc-head"><span class="fc-n">06</span><span class="fc-t"><b id="ft6">Dispensa e lista della spesa</b><small>In casa c'è ciò che serve</small></span></header>
+            <div class="fc-body">
+              <div class="fc-text"><p class="fc-lead">La dispensa mostra gli alimenti per categoria con quantità, −/+ e ricerca; quelli finiti sono segnalati in cima e portano alla lista.</p><button type="button" class="fc-more" aria-expanded="false" aria-controls="fm6">Approfondisci<i aria-hidden="true"></i></button></div>
+              <div class="fc-img"><img class="fc-p1" src="img/dispensa.webp" alt="" width="540" height="1169" loading="lazy"><img class="fc-p2" src="img/lista.webp" alt="" width="540" height="1169" loading="lazy"></div>
+            </div>
+            <div class="fc-panel" id="fm6" role="region" aria-label="Dispensa e lista della spesa: tutti i dettagli" hidden>
+              <div class="fc-panel-top"><b>Dispensa e lista della spesa</b><button type="button" class="fc-close" aria-label="Chiudi i dettagli"></button></div>
+              <div class="fc-panel-in"><ul>
           <li>La dispensa mostra gli alimenti per categoria con quantità, −/+ e ricerca; quelli finiti sono segnalati in cima e portano alla lista.</li>
           <li>Si riempie con la spesa (tasto «Finito» della lista) o a mano. Quando un pasto è segnato come mangiato, i suoi alimenti vengono scalati da soli.</li>
           <li>Appena confermi una dieta, i suoi alimenti entrano in dispensa come «finiti»: la lista sa subito cosa comprare.</li>
@@ -230,142 +217,101 @@
           <li>Spuntare significa «nel carrello»; con «Finito» tutto entra in dispensa. Puoi aggiungere articoli extra e anche cibi che la dieta non chiede.</li>
           <li>Una notifica (di norma alle 9, 15 e 18) avvisa solo se manca davvero qualcosa per oggi o domani.</li>
           <li><b>La lista si manda come messaggio</b> a chi fa la spesa al posto tuo: vedi sotto.</li>
-        </ul>
-      </div>
-      <div class="phones">
-        <div class="phone"><img src="img/dispensa.webp" alt="La dispensa con gli alimenti finiti in cima" width="540" height="1169" loading="lazy"></div>
-        <div class="phone"><img src="img/lista.webp" alt="La lista della spesa con gli urgenti in cima" width="540" height="1169" loading="lazy"></div>
-      </div>
-      </div></template>
+        </ul></div>
+            </div>
+          </article>
         </li>
         <li class="fcard v0" id="manda">
-          <button type="button" class="fc-btn" aria-expanded="false" aria-controls="fd7">
-            <span class="fc-head"><span class="fc-n">07</span><span class="fc-t"><b>Manda la spesa</b><small>Non vai tu? Mandala su WhatsApp</small></span><span class="fc-go" aria-hidden="true"><i></i></span></span>
-            <span class="fc-img"><img class="fc-p2" src="img/lista.webp" alt="" width="540" height="1169" loading="lazy"><span class="fc-fake fc-p1" aria-hidden="true"><span class="ff-t">Manda la lista</span><span class="ff-ch"><i class="on">Solo urgenti</i><i>Tutta la lista</i></span><span class="ff-bub"><b>🛒 Lista della spesa</b><s>Mercoledì 7 ottobre</s><s>⏰ <b>URGENTI</b></s><s>• Yogurt greco — 2 pz</s><s>• Petto di pollo — 300 g</s><s>• Insalata — 1 pz</s></span><span class="ff-go">Invia</span></span></span>
-          </button>
-          <div class="fc-detail" id="fd7" role="region" aria-label="Manda la spesa"></div>
-          <template><div class="feature">
-      <div class="text">
-        <p>Dalla lista, il tasto «Manda» prepara un messaggio già ordinato, con i titoli in grassetto e una riga per alimento. Lo invii a chi fa la spesa al posto tuo con WhatsApp, Telegram o un SMS.</p>
+          <article class="fc" aria-labelledby="ft7">
+            <header class="fc-head"><span class="fc-n">07</span><span class="fc-t"><b id="ft7">Manda la spesa</b><small>Non vai tu? Mandala su WhatsApp</small></span></header>
+            <div class="fc-body">
+              <div class="fc-text"><p class="fc-lead">Dalla lista, il tasto «Manda» prepara un messaggio già ordinato, con i titoli in grassetto e una riga per alimento. Lo invii a chi fa la spesa al posto tuo con WhatsApp, Telegram o un SMS.</p><button type="button" class="fc-more" aria-expanded="false" aria-controls="fm7">Approfondisci<i aria-hidden="true"></i></button></div>
+              <div class="fc-img"><img class="fc-p2" src="img/lista.webp" alt="" width="540" height="1169" loading="lazy"><span class="fc-fake fc-p1" aria-hidden="true"><span class="ff-t">Manda la lista</span><span class="ff-ch"><i class="on">Solo urgenti</i><i>Tutta la lista</i></span><span class="ff-bub"><b>🛒 Lista della spesa</b><s>Mercoledì 7 ottobre</s><s>⏰ <b>URGENTI</b></s><s>• Yogurt greco — 2 pz</s><s>• Petto di pollo — 300 g</s><s>• Insalata — 1 pz</s></span><span class="ff-go">Invia</span></span></div>
+            </div>
+            <div class="fc-panel" id="fm7" role="region" aria-label="Manda la spesa: tutti i dettagli" hidden>
+              <div class="fc-panel-top"><b>Manda la spesa</b><button type="button" class="fc-close" aria-label="Chiudi i dettagli"></button></div>
+              <div class="fc-panel-in"><p>Dalla lista, il tasto «Manda» prepara un messaggio già ordinato, con i titoli in grassetto e una riga per alimento. Lo invii a chi fa la spesa al posto tuo con WhatsApp, Telegram o un SMS.</p>
         <ul>
           <li><b>Solo urgenti</b> (quello che serve per oggi e domani) oppure <b>tutta la lista</b>.</li>
           <li>Vedi l'<b>anteprima</b> del messaggio prima di inviarlo, oppure lo copi e lo incolli dove vuoi.</li>
           <li>Vanno nel messaggio solo le cose che <b>mancano ancora</b>: quelle già nel carrello restano fuori.</li>
           <li>Nessun account e nessun server: il messaggio passa dal menù «Condividi» del telefono.</li>
-        </ul>
-      </div>
-      <div>
-        <div class="sharedemo" aria-label="Com'è il messaggio della spesa">
-          <div class="sd-sheet">
-            <div class="sd-title">Manda la lista</div>
-            <div class="sd-choices">
-              <div class="sd-choice"><b>Solo urgenti</b><small>3 cose</small></div>
-              <div class="sd-choice on"><b>Tutta la lista</b><small>6 cose</small></div>
+        </ul></div>
             </div>
-            <div class="sd-cap">Anteprima</div>
-            <div class="sd-chat"><div class="sd-bubble"><b>🛒 Lista della spesa</b>
-Mercoledì 7 ottobre · 6 cose da prendere
-
-⏰ <b>URGENTI</b> · per oggi e domani
-• Yogurt greco — 2 pz
-• Petto di pollo — 300 g
-• Insalata — 1 pz
-
-🥦 <b>Frutta e verdura</b>
-• Zucchine — 500 g
-• Mele — 4 pz
-
-<i>Fatta con Il mio menù</i></div></div>
-            <div class="sd-actions"><span class="sd-copy">Copia</span><span class="sd-send">Invia</span></div>
-          </div>
-        </div>
-      </div>
-      </div></template>
+          </article>
         </li>
         <li class="fcard v1" id="f8">
-          <button type="button" class="fc-btn" aria-expanded="false" aria-controls="fd8">
-            <span class="fc-head"><span class="fc-n">08</span><span class="fc-t"><b>Codici a barre</b><small>Al supermercato, basta inquadrare</small></span><span class="fc-go" aria-hidden="true"><i></i></span></span>
-            <span class="fc-img"><img class="fc-p1" src="img/codice.webp" alt="" width="540" height="1169" loading="lazy"><img class="fc-p2" src="img/lista-spuntata.webp" alt="" width="540" height="1169" loading="lazy"></span>
-          </button>
-          <div class="fc-detail" id="fd8" role="region" aria-label="Codici a barre"></div>
-          <template><div class="feature flip">
-      <div class="text">
-        <p>La fotocamera legge il codice a barre di un prodotto e l'app fa il resto: spunta la lista della spesa o carica la dispensa. Tutto sul telefono, senza rete.</p>
+          <article class="fc" aria-labelledby="ft8">
+            <header class="fc-head"><span class="fc-n">08</span><span class="fc-t"><b id="ft8">Codici a barre</b><small>Al supermercato, basta inquadrare</small></span></header>
+            <div class="fc-body">
+              <div class="fc-text"><p class="fc-lead">La fotocamera legge il codice a barre di un prodotto e l'app fa il resto: spunta la lista della spesa o carica la dispensa. Tutto sul telefono, senza rete.</p><button type="button" class="fc-more" aria-expanded="false" aria-controls="fm8">Approfondisci<i aria-hidden="true"></i></button></div>
+              <div class="fc-img"><img class="fc-p1" src="img/codice.webp" alt="" width="540" height="1169" loading="lazy"><img class="fc-p2" src="img/lista-spuntata.webp" alt="" width="540" height="1169" loading="lazy"></div>
+            </div>
+            <div class="fc-panel" id="fm8" role="region" aria-label="Codici a barre: tutti i dettagli" hidden>
+              <div class="fc-panel-top"><b>Codici a barre</b><button type="button" class="fc-close" aria-label="Chiudi i dettagli"></button></div>
+              <div class="fc-panel-in"><p>La fotocamera legge il codice a barre di un prodotto e l'app fa il resto: spunta la lista della spesa o carica la dispensa. Tutto sul telefono, senza rete.</p>
         <ul>
           <li><b>La prima volta gli dici cos'è.</b> Un codice sconosciuto apre «A cosa corrisponde?»: scrivi due lettere e l'app suggerisce gli alimenti della tua dispensa. Poi «Salva e applica» (lo ricorda) oppure «Solo questa volta».</li>
           <li><b>Dalle volte dopo basta un tocco.</b> La riga della lista si spunta da sola con la quantità della confezione, e puoi annullare. Lo stesso codice inquadrato ancora conta una confezione in più.</li>
           <li><b>Anche per la dispensa.</b> La confezione si somma all'alimento, oppure lo crea. Se l'unità è diversa, l'app converte con le equivalenze di misura che hai indicato; se non può, ti avvisa invece di indovinare.</li>
           <li>Funziona con i codici dei prodotti confezionati (EAN e UPC), anche inquadrati storti o capovolti. I prodotti a peso del banco si spuntano a mano.</li>
         </ul>
-        <p class="note">Nessuna rete e nessun archivio esterno di prodotti: quello che insegni all'app resta sul tuo telefono.</p>
-      </div>
-      <div class="phones">
-        <div class="phone"><img src="img/codice.webp" alt="A cosa corrisponde? Il codice a barre si associa agli alimenti" width="540" height="1169" loading="lazy"></div>
-        <div class="phone"><img src="img/lista-spuntata.webp" alt="La lista della spesa spuntata dopo la scansione" width="540" height="1169" loading="lazy"></div>
-      </div>
-      </div></template>
+        <p class="note">Nessuna rete e nessun archivio esterno di prodotti: quello che insegni all'app resta sul tuo telefono.</p></div>
+            </div>
+          </article>
         </li>
         <li class="fcard v2" id="f9">
-          <button type="button" class="fc-btn" aria-expanded="false" aria-controls="fd9">
-            <span class="fc-head"><span class="fc-n">09</span><span class="fc-t"><b>Attività fisica</b><small>La costanza si vede</small></span><span class="fc-go" aria-hidden="true"><i></i></span></span>
-            <span class="fc-img"><img class="fc-p1" src="img/attivita.webp" alt="" width="540" height="1169" loading="lazy"><img class="fc-p2" src="img/medaglie.webp" alt="" width="540" height="1169" loading="lazy"></span>
-          </button>
-          <div class="fc-detail" id="fd9" role="region" aria-label="Attività fisica"></div>
-          <template><div class="feature">
-      <div class="text">
-        <p>Un'attività a scelta (camminata, corsa, palestra, bici, nuoto, yoga o un nome libero) e un obiettivo da 1 a 7 volte a settimana.</p>
+          <article class="fc" aria-labelledby="ft9">
+            <header class="fc-head"><span class="fc-n">09</span><span class="fc-t"><b id="ft9">Attività fisica</b><small>La costanza si vede</small></span></header>
+            <div class="fc-body">
+              <div class="fc-text"><p class="fc-lead">Un'attività a scelta (camminata, corsa, palestra, bici, nuoto, yoga o un nome libero) e un obiettivo da 1 a 7 volte a settimana.</p><button type="button" class="fc-more" aria-expanded="false" aria-controls="fm9">Approfondisci<i aria-hidden="true"></i></button></div>
+              <div class="fc-img"><img class="fc-p1" src="img/attivita.webp" alt="" width="540" height="1169" loading="lazy"><img class="fc-p2" src="img/medaglie.webp" alt="" width="540" height="1169" loading="lazy"></div>
+            </div>
+            <div class="fc-panel" id="fm9" role="region" aria-label="Attività fisica: tutti i dettagli" hidden>
+              <div class="fc-panel-top"><b>Attività fisica</b><button type="button" class="fc-close" aria-label="Chiudi i dettagli"></button></div>
+              <div class="fc-panel-in"><p>Un'attività a scelta (camminata, corsa, palestra, bici, nuoto, yoga o un nome libero) e un obiettivo da 1 a 7 volte a settimana.</p>
         <ul>
           <li>Si segna con un tocco, dal Piano o dalla scheda Attività: settimane consecutive, record, ultime 12 settimane.</li>
           <li>40 medaglie da sbloccare con la costanza, alcune a sorpresa. Solo una spunta: niente durata, niente calorie.</li>
-        </ul>
-      </div>
-      <div class="phones">
-        <div class="phone"><img src="img/attivita.webp" alt="Attività: settimane consecutive e record" width="540" height="1169" loading="lazy"></div>
-        <div class="phone"><img src="img/medaglie.webp" alt="Le medaglie sbloccate" width="540" height="1169" loading="lazy"></div>
-      </div>
-      </div></template>
+        </ul></div>
+            </div>
+          </article>
         </li>
         <li class="fcard v3" id="f10">
-          <button type="button" class="fc-btn" aria-expanded="false" aria-controls="fd10">
-            <span class="fc-head"><span class="fc-n">10</span><span class="fc-t"><b>Personalizzazione e notifiche</b><small>Si adatta alla tua routine</small></span><span class="fc-go" aria-hidden="true"><i></i></span></span>
-            <span class="fc-img"><img class="fc-p1" src="img/pasti.webp" alt="" width="540" height="1169" loading="lazy"><img class="fc-p2" src="img/ocra.webp" alt="" width="540" height="1169" loading="lazy"></span>
-          </button>
-          <div class="fc-detail" id="fd10" role="region" aria-label="Personalizzazione e notifiche"></div>
-          <template><div class="feature flip">
-      <div class="text">
-        <ul>
+          <article class="fc" aria-labelledby="ft10">
+            <header class="fc-head"><span class="fc-n">10</span><span class="fc-t"><b id="ft10">Personalizzazione e notifiche</b><small>Si adatta alla tua routine</small></span></header>
+            <div class="fc-body">
+              <div class="fc-text"><p class="fc-lead">Nome e orario di ogni pasto, anche diverso nel fine settimana; ogni pasto si accende o si spegne, e se ne aggiungono altri (per esempio una merenda).</p><button type="button" class="fc-more" aria-expanded="false" aria-controls="fm10">Approfondisci<i aria-hidden="true"></i></button></div>
+              <div class="fc-img"><img class="fc-p1" src="img/pasti.webp" alt="" width="540" height="1169" loading="lazy"><img class="fc-p2" src="img/ocra.webp" alt="" width="540" height="1169" loading="lazy"></div>
+            </div>
+            <div class="fc-panel" id="fm10" role="region" aria-label="Personalizzazione e notifiche: tutti i dettagli" hidden>
+              <div class="fc-panel-top"><b>Personalizzazione e notifiche</b><button type="button" class="fc-close" aria-label="Chiudi i dettagli"></button></div>
+              <div class="fc-panel-in"><ul>
           <li>Nome e orario di ogni pasto, anche diverso nel fine settimana; ogni pasto si accende o si spegne, e se ne aggiungono altri (per esempio una merenda).</li>
           <li>Otto temi grafici classici: Predefinito, Blu, Scuro, Ocra, Salvia, Mirtillo, Cipria e Prugna. E otto speciali, da provare qui sotto.</li>
           <li>Notifiche: una per pasto, i promemoria di preparazione, la spesa urgente e l'attività solo se sei indietro con l'obiettivo. Gli stessi avvisi compaiono anche dentro il Piano.</li>
           <li>Nessun tutorial da sfogliare: un consiglio piccolo la prima volta su ogni schermata, e la guida «Come funziona l'app» sempre in Impostazioni.</li>
-        </ul>
-      </div>
-      <div class="phones">
-        <div class="phone"><img src="img/pasti.webp" alt="Impostazioni: nome e orario dei pasti" width="540" height="1169" loading="lazy"></div>
-        <div class="phone"><img src="img/ocra.webp" alt="Il piano con il tema Ocra" width="540" height="1169" loading="lazy"></div>
-      </div>
-      </div></template>
+        </ul></div>
+            </div>
+          </article>
         </li>
         <li class="fcard v4" id="f11">
-          <button type="button" class="fc-btn" aria-expanded="false" aria-controls="fd11">
-            <span class="fc-head"><span class="fc-n">11</span><span class="fc-t"><b>Misure e dati al sicuro</b><small>I numeri tornano, i dati non si perdono</small></span><span class="fc-go" aria-hidden="true"><i></i></span></span>
-            <span class="fc-img"><img class="fc-p1" src="img/equivalenze.webp" alt="" width="540" height="1169" loading="lazy"><img class="fc-p2" src="img/backup.webp" alt="" width="540" height="1169" loading="lazy"></span>
-          </button>
-          <div class="fc-detail" id="fd11" role="region" aria-label="Misure e dati al sicuro"></div>
-          <template><div class="feature">
-      <div class="text">
-        <ul>
+          <article class="fc" aria-labelledby="ft11">
+            <header class="fc-head"><span class="fc-n">11</span><span class="fc-t"><b id="ft11">Misure e dati al sicuro</b><small>I numeri tornano, i dati non si perdono</small></span></header>
+            <div class="fc-body">
+              <div class="fc-text"><p class="fc-lead"><b>Equivalenze di misura.</b> Per un alimento puoi scrivere, per esempio, «1 pz = 60 g», e vale nei due versi. Dieta, dispensa, lista, notifiche e codici a barre usano la stessa conversione.</p><button type="button" class="fc-more" aria-expanded="false" aria-controls="fm11">Approfondisci<i aria-hidden="true"></i></button></div>
+              <div class="fc-img"><img class="fc-p1" src="img/equivalenze.webp" alt="" width="540" height="1169" loading="lazy"><img class="fc-p2" src="img/backup.webp" alt="" width="540" height="1169" loading="lazy"></div>
+            </div>
+            <div class="fc-panel" id="fm11" role="region" aria-label="Misure e dati al sicuro: tutti i dettagli" hidden>
+              <div class="fc-panel-top"><b>Misure e dati al sicuro</b><button type="button" class="fc-close" aria-label="Chiudi i dettagli"></button></div>
+              <div class="fc-panel-in"><ul>
           <li><b>Equivalenze di misura.</b> Per un alimento puoi scrivere, per esempio, «1 pz = 60 g», e vale nei due versi. Dieta, dispensa, lista, notifiche e codici a barre usano la stessa conversione.</li>
           <li><b>Backup in un file.</b> Da Impostazioni › Backup dei dati salvi tutto in un unico file, nel punto che scegli tu: la cartella Download, per esempio, o un servizio cloud. Per ripristinarlo lo importi, e con «Torna ai dati di prima» puoi annullare.</li>
           <li><b>Salvataggio sicuro.</b> L'app tiene sempre l'ultima versione buona di ogni file: se un file si rovina, torna da lì invece di perdersi.</li>
         </ul>
-        <p class="note">Il backup è un file tuo: l'app non lo invia a nessuno e resta dove lo metti.</p>
-      </div>
-      <div class="phones">
-        <div class="phone"><img src="img/equivalenze.webp" alt="Equivalenze di misura: 1 pezzo uguale 60 grammi" width="540" height="1169" loading="lazy"></div>
-        <div class="phone"><img src="img/backup.webp" alt="Backup dei dati in un file" width="540" height="1169" loading="lazy"></div>
-      </div>
-      </div></template>
+        <p class="note">Il backup è un file tuo: l'app non lo invia a nessuno e resta dove lo metti.</p></div>
+            </div>
+          </article>
         </li>
         </ul>
       </div>
