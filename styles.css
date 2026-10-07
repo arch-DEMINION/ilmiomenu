@@ -640,3 +640,27 @@ html:not(.hp-on) .hp-view { overflow-x: auto; scroll-snap-type: x proximity; scr
 .fc-detail .sd-copy, .fc-detail .sd-send { min-height: 40px; font-size: 15px; }
 .fc-detail .sd-title { display: none; }
 .fc-detail .sd-bubble { font-size: 13px; line-height: 1.32; }
+
+/* ---------- Telefono (e «riduci movimento»): niente sezioni ferme, si sfoglia col dito ---------- */
+/* Funzioni: striscia nativa, una scheda per gesto, sempre al centro; tutte larghe uguali così niente salti. */
+html:not(.hp-on) .hpin-stage { padding: 56px 0 28px; }
+html:not(.hp-on) .hp-head h2 { display: block; }
+html:not(.hp-on) .hp-view { overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; overscroll-behavior-x: contain; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+html:not(.hp-on) .hp-view::-webkit-scrollbar { display: none; }
+html:not(.hp-on) .fstrip { transform: none !important; transition: none; padding: 6px calc((100vw - var(--ow, 354px)) / 2) 22px; align-items: stretch; }
+html:not(.hp-on) .fcard, html:not(.hp-on) .fcard.open { flex-basis: var(--ow, 354px); scroll-snap-align: center; scroll-snap-stop: always; transition: none; }
+html:not(.hp-on) .fcard .fc-btn { height: var(--ch); }
+html:not(.hp-on) .fcard.open .fc-btn { height: auto; }
+html:not(.hp-on) .fcard.open { height: var(--ch); display: flex; flex-direction: column; }
+html:not(.hp-on) .fcard.open .fc-detail { max-height: none; flex: 1; min-height: 0; }
+html:not(.hp-on) .fcard:not(.open) .fc-btn { opacity: .85; }
+
+/* Icone e temi: la sezione scorre via normalmente; si cambia con un gesto laterale o toccando i nomi. */
+.swipe .pin { height: auto !important; }
+.swipe .pin-stage { position: relative; height: auto; min-height: 0; padding: 48px 0 40px; }
+.swipe .itile, .swipe .deck { touch-action: pan-y; }
+.swipe .islot img { transition: opacity .45s ease, transform .45s cubic-bezier(.2, .8, .2, 1); }
+.swipe .dphone { transition: transform .5s cubic-bezier(.2, .8, .2, 1), opacity .5s; }
+.swipe .pin-hint::after { content: " ↔"; animation: none; }
+.swipe .deck { height: min(56svh, 520px); }
+.swipe .dphone { margin-left: calc(min(56svh, 520px) * 540 / 1169 / -2); }

@@ -13,13 +13,16 @@
   if (!pin || !strip) return;
   var root = document.documentElement, stage = pin.querySelector(".hpin-stage"), view = pin.querySelector(".hp-view");
   var still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var pinned = !still; // la pagina guida le schede; altrimenti solo cursore, frecce e tocco
+  // Con il mouse la pagina guida le schede; sul telefono (o con «riduci movimento») la striscia si sfoglia col dito,
+  // una scheda alla volta, e la pagina scorre normalmente.
+  var touch = window.matchMedia("(hover: none) and (pointer: coarse)").matches;
+  var pinned = !still && !touch;
   if (pinned) root.classList.add("hp-on");
   var cards = Array.prototype.slice.call(strip.querySelectorAll(".fcard"));
   var N = cards.length, cur = -1;
   var range = document.getElementById("hp-range"), lab = document.getElementById("hp-n"), labT = document.getElementById("hp-t");
   var prevB = document.querySelector(".hp-prev"), nextB = document.querySelector(".hp-next");
-  var GAP = 18, STEP_MIN = 300;
+  var GAP = 18, STEP_MIN = 300, syncing = false, settle;
   range.max = N - 1;
 
   function pinTop() { return pin.getBoundingClientRect().top + window.scrollY; }
@@ -32,8 +35,13 @@
   }
 
   // Sposta la striscia in modo che la scheda aperta stia al centro della vista.
-  function center() {
+  function center(smooth) {
     if (cur < 0) return;
+    if (!pinned) {
+      var li = cards[cur], left = li.offsetLeft - (view.clientWidth - li.offsetWidth) / 2;
+      if (Math.abs(view.scrollLeft - left) > 2) { syncing = true; view.scrollTo({ left: left, behavior: smooth === false ? "auto" : "smooth" }); }
+      return;
+    }
     var cw = Math.min(290, window.innerWidth * 0.78), ow = Math.min(1000, window.innerWidth - 36); // come in CSS: min(78vw, 290px) e --ow
     var x = cur * (cw + GAP) + ow / 2;
     strip.style.transform = "translate3d(" + Math.round(view.clientWidth / 2 - x) + "px,0,0)";
@@ -44,7 +52,7 @@
     d.textContent = "";
     d.appendChild(li.querySelector("template").content.cloneNode(true));
   }
-  function setIndex(i) {
+  function setIndex(i, fromSwipe) {
     i = Math.max(0, Math.min(N - 1, i));
     if (i === cur) return;
     var old = cards[cur];
@@ -58,7 +66,7 @@
     li.classList.add("open");
     li.querySelector(".fc-btn").setAttribute("aria-expanded", "true");
     fill(li);
-    center();
+    if (!fromSwipe) center();
     range.value = i;
     range.style.setProperty("--pct", (N > 1 ? i / (N - 1) * 100 : 0) + "%");
     lab.textContent = (i + 1) + " / " + N;
@@ -78,6 +86,16 @@
   }
   window.addEventListener("scroll", function () { if (!tick) { tick = true; requestAnimationFrame(fromScroll); } }, { passive: true });
   window.addEventListener("resize", function () { layout(); fromScroll(); });
+
+  if (!pinned) view.addEventListener("scroll", function () {
+    clearTimeout(settle);
+    settle = setTimeout(function () {
+      if (syncing) { syncing = false; return; }
+      var mid = view.scrollLeft + view.clientWidth / 2, best = 0, bd = Infinity;
+      cards.forEach(function (c, k) { var d = Math.abs(c.offsetLeft + c.offsetWidth / 2 - mid); if (d < bd) { bd = d; best = k; } });
+      setIndex(best, true);
+    }, 90);
+  }, { passive: true });
 
   // Cursore, frecce e tocco: in modalità «pagina guida» spostano la pagina, altrimenti cambiano scheda direttamente.
   function goTo(i, instant) {
@@ -101,11 +119,12 @@
 
   layout();
   setIndex(0);
+  if (!pinned) center(false);
   // Un link come #manda porta direttamente a quella scheda.
   function fromHash() {
     var id = location.hash.slice(1), i = cards.findIndex(function (c) { return c.id === id; });
     if (i < 0) return;
-    if (pinned) { window.scrollTo(0, pinTop()); setIndex(i); setTimeout(function () { goTo(i, true); }, 50); } else { document.getElementById("funzioni").scrollIntoView(); setIndex(i); }
+    if (pinned) { window.scrollTo(0, pinTop()); setIndex(i); setTimeout(function () { goTo(i, true); }, 50); } else { document.getElementById("funzioni").scrollIntoView(); setIndex(i); center(false); }
   }
   window.addEventListener("hashchange", fromHash);
   fromHash();
