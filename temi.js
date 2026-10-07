@@ -16,16 +16,16 @@
     ["ocra", "Ocra", "c", "3d", "Giallo ocra su pergamena e bianco."],
     ["salvia", "Salvia", "c", "3d", "Verde salvia, calmo e naturale."],
     ["mirtillo", "Mirtillo", "c", "3d", "Notte indaco con un solo colore vivo: la lavanda."],
-    ["cipria", "Cipria", "c", "3d", "Nuovo. Rosa cipria su bianco, morbido e luminoso."],
-    ["prugna", "Prugna", "c", "3d", "Nuovo. Notte color prugna con accento rosa, per la sera."],
+    ["cipria", "Cipria", "c", "3d", "Rosa cipria su bianco, morbido e luminoso."],
+    ["prugna", "Prugna", "c", "3d", "Notte color prugna con accento rosa, per la sera."],
     ["fumetto", "Fumetto", "s", "fumetto", "Bordi neri spessi, colori pieni, titoli da copertina. Il pasto segnato fa «GNAM!»."],
     ["quaderno", "Quaderno", "s", "quaderno", "Sfondo a quadretti e titoli scritti a mano. Il pasto segnato prende «Bravo!»."],
     ["salagiochi", "Sala giochi", "s", "pixel", "Toni scuri, spigoli vivi e titoli pixel. Il pasto segnato dà «+1UP»."],
     ["neon", "Neon", "s", "neon", "Muro scuro, insegne magenta e azzurre che si accendono, scintille al posto dei coriandoli."],
     ["progetto", "Progetto", "s", "progetto", "Linee su carta blu da disegno tecnico. Il pasto segnato viene «APPROVATO»."],
-    ["batuffolo", "Batuffolo", "s", "adesivo", "Nuovo. Un gatto come mascotte, zampette sullo sfondo e al posto delle spunte, un album di animali da collezionare con le medaglie."],
-    ["giardino", "Giardino", "s", "acquerello", "Nuovo. Un erbario: foglie come spunte e coriandoli, e le medaglie sono piante che crescono settimana dopo settimana."],
-    ["puntocroce", "Punto croce", "s", "puntocroce", "Nuovo. Tela di lino con cuciture rosse sulle schede, spunta a punto croce e coriandoli di filo."]
+    ["batuffolo", "Batuffolo", "s", "adesivo", "Un gatto come mascotte, zampette sullo sfondo e al posto delle spunte, un album di animali da collezionare con le medaglie."],
+    ["giardino", "Giardino", "s", "acquerello", "Un erbario: foglie come spunte e coriandoli, e le medaglie sono piante che crescono settimana dopo settimana."],
+    ["puntocroce", "Punto croce", "s", "puntocroce", "Tela di lino con cuciture rosse sulle schede, spunta a punto croce e coriandoli di filo."]
   ];
 
   // Dettagli dei temi speciali: font, forma delle schede, sfondo, spunta, coriandoli, festa, mascotte.
@@ -62,14 +62,14 @@
     var b = document.createElement("button");
     b.type = "button"; b.className = "chip" + (on ? " on" : "");
     b.setAttribute("role", "radio"); b.setAttribute("aria-checked", on ? "true" : "false");
-    b.innerHTML = (extra && extra.sw ? '<i style="background:' + extra.sw + '"></i>' : "") + "<span></span>" + (extra && extra.isNew ? "<em>nuovo</em>" : "");
+    b.innerHTML = (extra && extra.sw ? '<i style="background:' + extra.sw + '"></i>' : "") + "<span></span>";
     b.children[extra && extra.sw ? 1 : 0].textContent = label;
     parent.appendChild(b);
     return b;
   }
   var themeChips = {};
   T.forEach(function (t) {
-    var b = chip($(t[2] === "c" ? "chips-classic" : "chips-special"), t[1], t[0] === theme, { sw: swatch(t[0]), isNew: /^Nuovo/.test(t[4]) });
+    var b = chip($(t[2] === "c" ? "chips-classic" : "chips-special"), t[1], t[0] === theme, { sw: swatch(t[0]) });
     b.addEventListener("click", function () { setTheme(t[0], true); });
     themeChips[t[0]] = b;
   });
@@ -100,7 +100,6 @@
     mock.classList.toggle("ticks-img", !!x.tick);
     mock.classList.toggle("light", isLight(p.bg));
     info.textContent = themeDef(id)[4];
-    info.dataset.new = /^Nuovo/.test(themeDef(id)[4]) ? "1" : "";
     drawIcons(); drawMedals(); drawDone(); markChips();
     if (confetti && !still) burst(14);
   }

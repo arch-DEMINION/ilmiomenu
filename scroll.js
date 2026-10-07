@@ -24,7 +24,7 @@
   var FOOD = ["avocado", "salmon", "strawberry", "croissant"];
   var pi = document.getElementById("pin-icons");
   if (pi) {
-    var tile = document.getElementById("itile"), nameEl = document.getElementById("iname"), newEl = document.getElementById("inew"), dots = document.getElementById("idots");
+    var tile = document.getElementById("itile"), nameEl = document.getElementById("iname"), dots = document.getElementById("idots");
     var layers = [];
     FOOD.forEach(function (f) {
       var slot = document.createElement("div"); slot.className = "islot";
@@ -49,7 +49,7 @@
       }
       if (idx !== lastI) {
         lastI = idx;
-        nameEl.textContent = STY[idx][1]; newEl.hidden = !STY[idx][2];
+        nameEl.textContent = STY[idx][1];
         tile.style.setProperty("--tile", STY[idx][3]);
         for (var j = 0; j < dotEls.length; j++) dotEls[j].classList.toggle("on", j === idx);
       }
