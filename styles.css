@@ -545,27 +545,56 @@ html:not(.hp-on) .hp-view { overflow-x: auto; scroll-snap-type: x proximity; scr
 .fc-btn:hover .fc-p2 { transform: rotate(9deg) translate(8px, -4px); }
 .fc-btn:hover .fc-img.one .fc-p1 { transform: rotate(0) scale(1.04); }
 
-/* scheda aperta: stile del sito, bianca, testo a sinistra e telefoni a destra */
+/* scheda aperta: stessi colori della scheda chiusa, testo e telefoni centrati, riquadro nello stile dell'app */
 .fc-detail { display: none; }
-.fcard.open .fc-btn { height: auto; background: var(--white); color: var(--ink); box-shadow: none; border: 1px solid var(--line); border-radius: 26px 26px 0 0; border-bottom: 0; cursor: pointer; }
+.v0 { --fc-accent: #E8873A; --fc-card: rgba(255, 255, 255, .09); --fc-line: rgba(255, 255, 255, .16); }
+.v1 { --fc-accent: #D9701F; --fc-card: rgba(255, 255, 255, .72); --fc-line: rgba(217, 112, 31, .25); }
+.v2 { --fc-accent: #FFD54A; --fc-card: rgba(255, 255, 255, .12); --fc-line: rgba(255, 255, 255, .22); }
+.v3 { --fc-accent: #5F6E2E; --fc-card: rgba(255, 255, 255, .7); --fc-line: rgba(95, 110, 46, .25); }
+.v4 { --fc-accent: #FF3DCB; --fc-card: rgba(255, 255, 255, .08); --fc-line: rgba(255, 61, 203, .35); }
+.v5 { --fc-accent: #C94F77; --fc-card: rgba(255, 255, 255, .72); --fc-line: rgba(201, 79, 119, .28); }
+.fstrip { align-items: center; }
+.fcard.open { background: var(--fc-bg); color: var(--fc-ink, #fff); border-radius: 26px; box-shadow: 0 20px 44px rgba(21, 16, 12, .22); overflow: hidden; }
+.fcard.open .fc-btn { height: auto; background: none; color: inherit; box-shadow: none; border-radius: 0; cursor: pointer; }
 .fcard.open .fc-btn:hover { transform: none; }
 .fcard.open .fc-img { display: none; }
-.fcard.open .fc-head { position: static; padding: 18px 20px 14px; }
-.fcard.open .fc-n { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 12px; background: var(--peach); color: var(--accent-ink); opacity: 1; padding: 0; }
-.fcard.open .fc-t small { color: var(--soft); opacity: 1; }
+.fcard.open .fc-head { position: static; padding: 20px 22px 8px; align-items: center; }
+.fcard.open .fc-n { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 13px; background: var(--fc-accent); color: #fff; opacity: 1; padding: 0; font-size: 15px; }
+.v2.open .fc-n, .v4.open .fc-n { color: #15100c; }
+.fcard.open .fc-t b { font-size: 23px; }
+.fcard.open .fc-t small { opacity: .8; }
 .fcard.open .fc-go { transform: rotate(45deg); }
-.fcard.open .fc-detail { display: block; height: calc(var(--ch) - 82px); overflow-y: auto; background: var(--white); border: 1px solid var(--line); border-top: 0; border-radius: 0 0 26px 26px; padding: 4px 24px 26px; animation: fc-in .5s .1s ease both; }
+.fcard.open .fc-detail { display: block; max-height: calc(var(--ch) - 90px); overflow-y: auto; padding: 8px 24px 26px; animation: fc-in .5s .1s ease both; }
 @keyframes fc-in { from { opacity: 0; transform: translateY(14px); } }
-.fc-detail .feature { display: grid; gap: 28px; padding: 0; border: 0; align-items: start; }
-.fc-detail .feature p, .fc-detail .feature li { color: var(--soft); }
+.fc-detail .feature { display: grid; gap: 26px; padding: 0; border: 0; align-items: center; }
+.fc-detail .feature p, .fc-detail .feature li { color: inherit; opacity: .92; }
+.fc-detail .feature li b { color: inherit; }
+.fc-detail .feature li::marker { color: var(--fc-accent); }
 .fc-detail .phones { order: -1; }
-.fc-detail .phones .phone { max-width: 180px; }
+.fc-detail .phones .phone { max-width: 180px; box-shadow: 0 0 0 1.5px rgba(0, 0, 0, .35), 0 16px 34px rgba(0, 0, 0, .3); }
+/* riquadro «Per il professionista»: scheda dell'app con barra colorata a sinistra e etichetta */
+.fc-detail .note { margin-top: 16px; padding: 14px 16px 14px 18px; background: var(--fc-card); border: 1.5px solid var(--fc-line); border-left: 6px solid var(--fc-accent); border-radius: 18px; color: inherit; font-size: 15.5px; line-height: 1.5; box-shadow: 0 6px 16px rgba(0, 0, 0, .08); }
+.fc-detail .note b { display: inline-block; margin-bottom: 6px; padding: 3px 11px; border-radius: 999px; background: var(--fc-accent); color: #fff; font-size: 12px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; }
+.v2 .fc-detail .note b, .v4 .fc-detail .note b { color: #15100c; }
+.fc-detail .note b::after { content: none; }
+.fc-detail .note b + * { }
 @media (min-width: 900px) {
   .fc-detail .feature { grid-template-columns: 1fr 330px; gap: 36px; }
   .fc-detail .feature.flip .text { order: 0; }
   .fc-detail .phones { order: 0; }
   .fc-detail .phones .phone { max-width: 160px; }
 }
-.fc-detail .phone .phone, .fc-detail .reveal { opacity: 1; transform: none; }
+.fc-detail .reveal { opacity: 1; transform: none; }
+/* immagine finta di «Manda la lista» sulla scheda chiusa */
+.fc-img .fc-fake { position: absolute; width: 56%; aspect-ratio: 540 / 1169; border-radius: 22px; border: 5px solid #0b0806; background: #1d1712; box-shadow: 0 14px 30px rgba(0, 0, 0, .35); display: flex; flex-direction: column; gap: 5px; padding: 10px 8px; font-size: 7.5px; line-height: 1.3; color: #F5EDE4; overflow: hidden; transition: transform .5s cubic-bezier(.2, .7, .2, 1); text-align: left; }
+.ff-t { font-weight: 800; font-size: 10px; }
+.ff-ch { display: flex; gap: 4px; }
+.ff-ch i { flex: 1; font-style: normal; font-weight: 700; padding: 4px 5px; border: 1px solid #5A4636; border-radius: 6px; font-size: 7px; }
+.ff-ch i.on { border-color: #E8873A; background: rgba(232, 135, 58, .2); }
+.ff-bub { background: #dcf8c6; color: #1f2a1a; border-radius: 7px 7px 2px 7px; padding: 6px 6px; display: flex; flex-direction: column; gap: 2px; }
+.ff-bub s { text-decoration: none; display: block; }
+.ff-bub b { font-weight: 800; }
+.ff-go { margin-top: auto; text-align: center; background: #E8873A; color: #1A1410; font-weight: 800; padding: 5px; border-radius: 99px; font-size: 8px; }
 @media (max-height: 700px) { .hp-head .lead { display: none; } }
 @media (prefers-reduced-motion: reduce) { .fcard, .fc-btn, .fc-img img { transition: none; } .fcard.open .fc-detail { animation: none; } }
+.pinon .istyles, .pinon .center-lead { display: none; }
