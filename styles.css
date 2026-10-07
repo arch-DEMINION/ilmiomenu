@@ -443,8 +443,8 @@ footer nav a { min-height: 44px; display: inline-flex; align-items: center; }
 .pin-hint::after { content: " ↓"; display: inline-block; animation: nudge 1.6s ease-in-out infinite; }
 @keyframes nudge { 50% { transform: translateY(4px); } }
 .idots { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; max-width: 640px; margin-top: 14px; }
-.idots span { font-size: 13px; font-weight: 700; padding: 5px 11px; border-radius: 999px; background: rgba(0, 0, 0, .06); color: var(--soft); transition: background .3s, color .3s, transform .3s; }
-.idots span.on { background: var(--accent); color: var(--dark); transform: scale(1.1); }
+.idots span, .idots button { font-size: 13px; font-weight: 700; padding: 5px 11px; border-radius: 999px; background: rgba(0, 0, 0, .06); color: var(--soft); transition: background .3s, color .3s, transform .3s; }
+.idots span.on, .idots button.on { background: var(--accent); color: var(--dark); transform: scale(1.1); }
 
 /* icone */
 .pin-icons .pin-stage { background: transparent; }
@@ -461,9 +461,9 @@ footer nav a { min-height: 44px; display: inline-flex; align-items: center; }
 .pin-themes .pin-stage { background: var(--stage); border-radius: 0; color: #fff; }
 .pin-themes.lightbg .pin-stage { color: var(--ink); }
 .pin-themes .pin-stage .eyebrow { color: inherit; opacity: .75; }
-.pin-themes .pin-hint, .pin-themes .idots span { color: inherit; }
-.pin-themes .idots span { background: rgba(127, 127, 127, .22); }
-.pin-themes .idots span.on { background: var(--accent); color: var(--dark); }
+.pin-themes .pin-hint, .pin-themes .idots button { color: inherit; }
+.pin-themes .idots button { background: rgba(127, 127, 127, .22); }
+.pin-themes .idots button.on { background: var(--accent); color: var(--dark); }
 .deck { position: relative; width: min(100%, 760px); height: min(58vh, 560px); margin-top: 10px; perspective: 1200px; }
 .dphone { position: absolute; left: 50%; top: 0; height: 100%; aspect-ratio: 540 / 1169; margin-left: calc(min(58vh, 560px) * 540 / 1169 / -2); will-change: transform, opacity; }
 .dphone .phone { height: 100%; max-width: none; width: 100%; }
@@ -472,4 +472,8 @@ footer nav a { min-height: 44px; display: inline-flex; align-items: center; }
 .deck-cap b { display: block; font-size: clamp(24px, 4.5vw, 32px); }
 .deck-cap span { display: block; margin-top: 4px; font-size: 16px; opacity: .85; }
 @media (max-width: 899px) { .pin-themes .pin-stage { margin: 0 calc(var(--gutter) * -1); } }
-@media (max-width: 520px) { .itile { border-radius: 22px; } .idots span { font-size: 12px; padding: 4px 9px; } }
+@media (max-width: 520px) { .itile { border-radius: 22px; } .idots span, .idots button { font-size: 12px; padding: 4px 9px; } }
+
+.idots button { border: 0; cursor: pointer; font-family: inherit; min-height: 32px; }
+.idots button:hover { background: var(--accent); color: var(--dark); }
+@media (pointer: coarse) { .idots button { min-height: 44px; padding: 8px 14px; } }

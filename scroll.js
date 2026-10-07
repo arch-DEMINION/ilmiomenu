@@ -4,6 +4,17 @@
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return; // restano la griglia e la galleria statiche
   root.classList.add("pinon");
   var clamp = function (v) { return Math.max(0, Math.min(1, v)); };
+  // Porta la pagina al punto in cui la sezione ferma mostra l'elemento i di n (inverso di progress).
+  function goTo(el, i, n) {
+    var r = el.getBoundingClientRect(), span = r.height - window.innerHeight;
+    window.scrollTo({ top: window.scrollY + r.top + (0.06 + 0.88 * i / (n - 1)) * span + 1, behavior: "smooth" });
+  }
+  function dot(parent, label, el, i, n) {
+    var d = document.createElement("button");
+    d.type = "button"; d.textContent = label;
+    d.addEventListener("click", function () { goTo(el, i, n); });
+    parent.appendChild(d);
+  }
   function progress(el) { var r = el.getBoundingClientRect(); return clamp((-r.top / (r.height - window.innerHeight) - 0.06) / 0.88); }
 
   // ---------- una icona, undici stili ----------
@@ -24,7 +35,7 @@
       tile.appendChild(slot);
     });
     STY.forEach(function (s, i) {
-      var d = document.createElement("span"); d.textContent = s[1]; dots.appendChild(d);
+      dot(dots, s[1], pi, i, STY.length);
     });
     var dotEls = dots.children, lastI = -1;
     function drawIcons() {
@@ -55,11 +66,11 @@
   var pt = document.getElementById("pin-themes");
   if (pt) {
     var deck = document.getElementById("deck"), dn = document.getElementById("dname"), di = document.getElementById("dinfo"), dd = document.getElementById("ddots");
-    var figs = TH.map(function (t) {
+    var figs = TH.map(function (t, i) {
       var f = document.createElement("div"); f.className = "dphone";
       f.innerHTML = '<div class="phone"><img src="img/' + t[0] + '.webp" alt="Tema ' + t[1] + '" width="540" height="1169" decoding="async"></div>';
       deck.appendChild(f);
-      var d = document.createElement("span"); d.textContent = t[1]; dd.appendChild(d);
+      dot(dd, t[1], pt, i, TH.length);
       return f;
     });
     var ddEls = dd.children, lastT = -1;
