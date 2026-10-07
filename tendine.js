@@ -58,7 +58,14 @@
     range.style.setProperty("--pct", (p * 100).toFixed(2) + "%");
     // scheda più vicina al centro: etichetta e frecce
     var mid = x + view.clientWidth / 2, best = 0, bd = Infinity;
-    cards.forEach(function (c, k) { var d = Math.abs(c.offsetLeft + c.offsetWidth / 2 - mid); if (d < bd) { bd = d; best = k; } });
+    cards.forEach(function (c, k) {
+      var off = c.offsetLeft + c.offsetWidth / 2 - mid, d = Math.abs(off);
+      if (d < bd) { bd = d; best = k; }
+      // posizione rispetto al centro (-1 a sinistra, 1 a destra): guida zoom e parallasse dei telefoni
+      var r = Math.max(-1.5, Math.min(1.5, off / c.offsetWidth));
+      if (Math.abs(r) < 1.5 || c._r !== r) { c.style.setProperty("--d", r.toFixed(3)); c._r = r; }
+    });
+    cards.forEach(function (c, k) { c.classList.toggle("focus", k === best); });
     if (best !== cur) {
       cur = best;
       lab.textContent = (cur + 1) + " / " + N;
