@@ -197,8 +197,19 @@ section { position: relative; overflow-x: clip; }
 .about .avatar { width: 96px; height: 96px; border-radius: 26px; box-shadow: var(--shadow); }
 @media (min-width: 900px) { .about { grid-template-columns: auto 1fr; gap: 48px; } .about .avatar { width: 140px; height: 140px; border-radius: 34px; } }
 
-.test { display: grid; gap: 32px; }
-@media (min-width: 900px) { .test { grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; } }
+.get { text-align: center; display: flex; flex-direction: column; align-items: center; }
+.get .lead { max-width: 620px; margin-top: 4px; }
+.get .small { margin-top: 22px; }
+.btn svg.gp { width: 22px; height: 22px; background: #fff; border-radius: 50%; padding: 4px; box-sizing: content-box; }
+.gp-badge {
+  display: inline-flex; align-items: center; gap: 14px; margin-top: 30px; min-height: 64px; padding: 10px 28px 10px 22px;
+  background: #000; color: #fff; text-decoration: none; border-radius: 14px; box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, .35);
+  transition: transform .2s, box-shadow .2s;
+}
+.gp-badge:hover { transform: translateY(-2px); box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, .6), 0 10px 24px rgba(0, 0, 0, .4); }
+.gp-badge svg { width: 36px; height: 36px; }
+.gp-badge span { display: flex; flex-direction: column; text-align: left; font: 800 24px/1.1 Nunito, sans-serif; }
+.gp-badge small { font-size: 13px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; opacity: .85; }
 .tform { background: var(--dark-2); border: 1px solid var(--dark-line); border-radius: var(--radius); padding: 24px; display: grid; gap: 16px; }
 .tform label { display: grid; gap: 8px; font-weight: 700; font-size: 15px; color: var(--on-dark); }
 .tform input, .tform textarea {
